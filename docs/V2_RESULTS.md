@@ -67,7 +67,7 @@ Every number below comes from the reproducible benchmark in `bench/` (dataset an
 * MediaPipe's GPU (WebGL) delegate was 7× slower than CPU in headless. The CPU delegate is the default; it is also the predictable choice on iOS.
 * **COCO-SSD is kept as the "lite" fallback** (it is used automatically if the main model fails to load). It is now decoded from the raw graph outputs, with letterboxing and our own class-aware NMS. That alone raises its F1 from 82 % to 89 % at tuned thresholds. Its p50 is dominated by GPU→CPU readback under SwiftShader.
 * Letterboxing: implemented for all backends (grey 114 padding, exact inverse mapping, checked by the harness's padded-image test, IoU 0.67).
-* Input size: 320/416/640 for YOLO and 300/320/416 for COCO-SSD; EfficientDet is fixed by the model (320 / 448). **Adaptive mode** steps the size down when p50 > 1.3× the budget (180 ms normal / 400 ms low-power) or on latency drift, and back up when p50 < 0.45× the budget.
+* Input size: 320/416/640 for YOLO and 300/320/416 for COCO-SSD; EfficientDet is fixed by the model (320 / 448). **Adaptive mode** steps the size down when p50 > 1.3× the budget (180 ms normal / 400 ms low-power), and back up when p50 < 0.45× the budget.
 * NMS: greedy **class-aware** NMS with a configurable IoU (default 0.5). Suppressed boxes are reported to Diagnostics as `nms suppressed`.
 * **Low-light enhancement** (auto gamma + 1–99 % contrast stretch when mean luma < 0.38) made things **worse** for EfficientDet (F1 95 → 93 %, hard recall 93 → 79 %). It helped YOLO11n slightly (90 → 93 %). → **off by default**, available as a toggle.
 
@@ -155,7 +155,6 @@ The DIAG tab shows:
 * Detector p50/p95 split into pre / infer / post, plus motion, YAMNet and draw p50.
 * Frame policy (latest-frame only, queue depth 0/1), skipped detector slots, and camera frames vs. analysed (via `requestVideoFrameCallback`).
 * JS heap (Chromium only) and `tf.memory()`.
-* A latency-drift / thermal hint (+60 % vs. post-warm-up baseline → step the size down and log it).
 * The latest raw detections with raw score vs. class threshold vs. track confidence and the **rejection reason**.
 * The track table (state, hits N/M, age, peak, zone) and audio categories (raw / smoothed / baseline / effective / threshold).
 
@@ -169,7 +168,7 @@ The v1 timed-trial flow is kept unchanged.
 
 `visibilitychange`, `pagehide` and camera track `mute`/`ended` all pause analysis. On return SENTINEL logs a `MONITORING GAP` event ("NOT monitoring for N s (reason) from <time>"), resets the background/tracker/audio models, and restarts the camera if iOS ended the track.
 The HUD always shows "FOREGROUND ONLY" (and "PAUSED — NOT MONITORING" during a gap). The splash and Help say plainly that background monitoring is impossible in Safari.
-Thermal throttling is handled through drift detection and adaptive size/rate. Help covers camera permission re-prompts (aA › Website Settings, Settings › Apps › Safari) and storage eviction.
+Help covers camera permission re-prompts (aA › Website Settings, Settings › Apps › Safari) and storage eviction.
 
 ## Test suite
 

@@ -19,7 +19,7 @@
   var engine = new SMotion.Engine(MW, MH, { sens: S.sens }), mstat = null, prevGray = null, refGray = null, scene = null, lastMoverT = -1e9;
   var smoother = null, audioState = null, topSound = null;
   var lastRaw = [], lastSup = [], lastDiag = [], busy = false, lastDetT = 0, lastAudioT = 0, lastMotT = 0, deb = new SCore.Debouncer(S.deb * 1000);
-  var stats = { det: [], pre: [], infer: [], post: [], motion: [], audio: [], draw: [], detTimes: [], skipped: 0, ticks: 0, vfc: 0, vfcProcessed: 0, baseline: null, drift: false, adaptLog: [] };
+  var stats = { det: [], pre: [], infer: [], post: [], motion: [], audio: [], draw: [], detTimes: [], skipped: 0, ticks: 0, vfc: 0, vfcProcessed: 0, adaptLog: [] };
   var gapStart = null, trial = null, zoneEdit = null, labeling = field.lab && !field.lab.end ? field.lab : null;
   var incMgr = new SInc.IncidentManager({ gapMs: S.gap * 1000, motionOpens: S.malert, onChange: function (I) { SStore.putIncident(I); renderIncBar(I); } });
   window.__sentinel = { VERSION: VERSION, S: S, field: function () { return field; }, tracker: tracker, engine: engine, stats: stats, incMgr: incMgr,
@@ -59,8 +59,8 @@
   function buildSettings() {
     $('s-model').innerHTML = Object.keys(SDet2.MODELS).map(function (k) { return '<option value="' + k + '">' + SDet2.MODELS[k].label + (k === 'effdet0' ? ' — recommended' : '') + '</option>'; }).join('');
     $('s-model').value = S.model; fillSizes();
-    $('s-model').onchange = async function () { S.model = this.value; S.size = 0; save(); fillSizes(); toast('Loading ' + SDet2.MODELS[S.model].label + '…'); try { await SDet2.load(S.model, {}, status); stats.det = []; stats.baseline = null; toast('Model ready'); } catch (e) { toast('Model load failed: ' + e.message); } };
-    $('s-size').onchange = function () { S.size = +this.value; save(); SDet2.setInputSize(S.size); stats.det = []; stats.baseline = null; };
+    $('s-model').onchange = async function () { S.model = this.value; S.size = 0; save(); fillSizes(); toast('Loading ' + SDet2.MODELS[S.model].label + '…'); try { await SDet2.load(S.model, {}, status); stats.det = []; toast('Model ready'); } catch (e) { toast('Model load failed: ' + e.message); } };
+    $('s-size').onchange = function () { S.size = +this.value; save(); SDet2.setInputSize(S.size); stats.det = []; };
     bindChk('s-adapt', 'adapt'); bindChk('s-enh', 'enh'); bindRange('s-iou', 'iou', function (v) { return v.toFixed(2); });
     $('s-enh-note').textContent = 'Off by default: on the benchmark it did not improve accuracy (see docs/V2_RESULTS.md). Try it at dusk.';
     bindRange('s-sens', 'sens', function (v) { return v; });
@@ -113,7 +113,7 @@
     if (!gapStart) return; var g = gapStart; gapStart = null; var dur = (Date.now() - g.t) / 1000;
     $('h-mon').textContent = '● FOREGROUND ONLY'; $('h-mon').classList.remove('paused');
     logEvent('gap', 'monitoring gap', null, 'NOT monitoring for ' + dur.toFixed(0) + ' s (' + g.why + ') from ' + new Date(g.t).toISOString(), { gapStart: new Date(g.t).toISOString(), gapSec: Math.round(dur) });
-    engine.reset(); tracker.reset(); prevGray = null; if (smoother) smoother.reset(); stats.baseline = null;
+    engine.reset(); tracker.reset(); prevGray = null; if (smoother) smoother.reset(); 
     toast('Monitoring resumed — gap of ' + dur.toFixed(0) + ' s logged', 3500);
   }
   document.addEventListener('visibilitychange', async function () {
@@ -222,16 +222,14 @@
     try { var b = await snapshotBlob(); await SStore.putSnap(id, b); t.snapQ = t.best.q; t.snapT = performance.now(); t.snapId = id;
       if (incMgr.cur && incMgr.cur.tracks[String(t.id)]) { var it = incMgr.cur.tracks[String(t.id)]; it.snapId = id; if (incMgr.cur.snaps.indexOf(id) < 0) incMgr.cur.snaps.push(id); SStore.putIncident(incMgr.cur); } } catch (e) {}
   }
-  // adaptive input size + thermal/latency drift detection
+  // adaptive input size (latency budget)
   function adapt() {
     var c = SDet2.current(); if (!c || stats.det.length < 20) return;
     var recent = pct(stats.det.slice(-20), .5);
-    if (!stats.baseline && stats.det.length >= 30) stats.baseline = pct(stats.det.slice(-30), .5);
-    stats.drift = !!(stats.baseline && recent > stats.baseline * 1.6);
     if (!S.adapt) return;
     var budget = S.low ? 400 : 180, i = c.sizes.indexOf(c.inputSize), now = performance.now();
     if (stats.lastAdapt && now - stats.lastAdapt < 8000) return;
-    if ((recent > budget * 1.3 || stats.drift) && i > 0) { SDet2.setInputSize(c.sizes[i - 1]); stats.lastAdapt = now; stats.det = []; stats.baseline = null; stats.adaptLog.push(new Date().toISOString().slice(11, 19) + ' ↓' + c.sizes[i - 1] + (stats.drift ? ' (latency drift — possible thermal throttling)' : ' (p50 ' + Math.round(recent) + ' ms > budget)')); }
+    if (recent > budget * 1.3 && i > 0) { SDet2.setInputSize(c.sizes[i - 1]); stats.lastAdapt = now; stats.det = []; stats.adaptLog.push(new Date().toISOString().slice(11, 19) + ' ↓' + c.sizes[i - 1] + ' (p50 ' + Math.round(recent) + ' ms > budget)'); }
     else if (recent < budget * 0.45 && i < c.sizes.length - 1 && i < c.sizes.indexOf(S.size || SDet2.MODELS[c.id].def) + 1) { SDet2.setInputSize(c.sizes[i + 1]); stats.lastAdapt = now; stats.det = []; stats.adaptLog.push(new Date().toISOString().slice(11, 19) + ' ↑' + c.sizes[i + 1]); }
   }
 
@@ -461,8 +459,7 @@
       ['Detector latency p50 / p95', ms(pct(stats.det, .5)) + ' / ' + ms(pct(stats.det, .95))], ['  preprocess / inference / postprocess (p50)', ms(pct(stats.pre, .5)) + ' / ' + ms(pct(stats.infer, .5)) + ' / ' + ms(pct(stats.post, .5))],
       ['Motion engine p50', ms(pct(stats.motion, .5))], ['Audio (YAMNet) p50 / p95', ms(pct(stats.audio, .5)) + ' / ' + ms(pct(stats.audio, .95))], ['Overlay draw p50', ms(pct(stats.draw, .5))],
       ['Frame policy', 'latest-frame only (queue depth ' + (busy ? 1 : 0) + ')'], ['Skipped detector slots (busy)', stats.skipped], ['Camera frames / processed', caps.rvfc ? stats.vfc + ' / ' + stats.vfcProcessed + ' (' + (stats.vfc ? Math.round(100 * (1 - stats.vfcProcessed / stats.vfc)) : 0) + '% not analysed)' : 'n/a'],
-      ['Memory', mem + (tm ? ' · tf tensors ' + tm.numTensors + ' / ' + (tm.numBytes / 1048576).toFixed(1) + ' MB' : '')], ['Thermal / latency drift', stats.drift ? '⚠ latency +60% vs baseline — possible thermal throttling' : 'ok' + (stats.baseline ? ' (baseline p50 ' + stats.baseline.toFixed(0) + ' ms)' : '')],
-      ['Adaptive changes', stats.adaptLog.slice(-4).join('; ') || 'none'], ['Motion', mstat ? 'fg ' + mstat.fgPct.toFixed(2) + '% · blobs ' + mstat.blobs.length + ' · movers ' + mstat.movers.length + ' · shake ' + mstat.shift.join(',') + ' · gain ' + mstat.gain.toFixed(2) + (mstat.warm ? ' · learning' : '') : '—'],
+      ['Memory', mem + (tm ? ' · tf tensors ' + tm.numTensors + ' / ' + (tm.numBytes / 1048576).toFixed(1) + ' MB' : '')], ['Adaptive changes', stats.adaptLog.slice(-4).join('; ') || 'none'], ['Motion', mstat ? 'fg ' + mstat.fgPct.toFixed(2) + '% · blobs ' + mstat.blobs.length + ' · movers ' + mstat.movers.length + ' · shake ' + mstat.shift.join(',') + ' · gain ' + mstat.gain.toFixed(2) + (mstat.warm ? ' · learning' : '') : '—'],
       ['Zones', S.zones.length + ' (' + S.zones.map(function (z) { return z.type; }).join(', ') + ')'], ['Audio', audioMsg || 'off'], ['Monitoring', gapStart ? 'PAUSED since ' + new Date(gapStart.t).toISOString() : 'active (foreground)']];
     $('d-stats').innerHTML = rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('');
     $('d-raw').innerHTML = '<tr><th>CLASS</th><th>RAW</th><th>CLASS THR</th><th>TRACK</th><th>TRACK CONF</th><th>STATUS / REASON</th></tr>' + lastDiag.map(function (d) {
