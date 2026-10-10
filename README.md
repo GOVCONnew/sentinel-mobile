@@ -1,3 +1,22 @@
+# Newton SENTINEL Mobile 2.0
+
+On-device wildlife & activity monitoring for iPhone Safari (iOS 17+): camera + mic only, no backend, nothing uploaded.
+Live: https://govconnew.github.io/sentinel-mobile/
+
+**v2.0 focus: accuracy & reliability outdoors.**
+* EfficientDet-Lite0 detector (MediaPipe, Apache-2.0). YOLO11n/YOLOv8n (ONNX Runtime Web, AGPL-3.0) and COCO-SSD are options/fallback.
+* Letterboxing and class-aware NMS.
+* ByteTrack-style confirmation with per-category N-of-M persistence; raw → confirmed → event layers.
+* Motion engine with camera-shake compensation, adaptive background, illumination normalisation and coherent-blob filtering.
+* ROI / exclusion polygons.
+* YAMNet smoothing, ambient baseline and wind/rain suppression.
+* Incidents with "possibly related" audio-visual co-occurrence, and a searchable IndexedDB history.
+* Diagnostics panel, tap-to-label field testing with anonymised export, and honest monitoring-gap logging (Safari cannot monitor in the background).
+
+Docs: `docs/V2_AUDIT.md` (v1 audit + baseline) · `docs/V2_RESULTS.md` (before/after). Benchmark: `bench/` (see `bench/ATTRIBUTION.md`).
+Tests: `node test/run_tests.js` (set `BASE=https://govconnew.github.io/sentinel-mobile` to test the live site).
+
+---
 # Newton SENTINEL Mobile
 
 On-device forest/field wildlife & activity detection for iPhone Safari (iOS 17+). No backend, no paid APIs.

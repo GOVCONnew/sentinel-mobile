@@ -63,15 +63,15 @@
     "checks": {
       "detector effdet0 person+dog": {
         "pass": true,
-        "info": "person 0.91, dog 0.55 | mediapipe-cpu @320 load 669ms, 113/91/85ms"
+        "info": "person 0.91, dog 0.55 | mediapipe-cpu @320 load 816ms, 126/83/84ms"
       },
       "detector yolo11n person+dog": {
         "pass": true,
-        "info": "person 0.89, dog 0.31 | ort-wasm @416 load 1640ms, 143/161/146ms"
+        "info": "person 0.89, dog 0.31 | ort-wasm @416 load 1368ms, 165/164/209ms"
       },
       "detector coco-lite person+dog": {
         "pass": true,
-        "info": "dog 0.91, person 0.68, person 0.38 | webgl @320 load 4967ms, 365/379/372ms"
+        "info": "dog 0.91, person 0.68, person 0.38 | webgl @320 load 5046ms, 341/363/389ms"
       },
       "letterbox → source mapping consistent": {
         "pass": true,
@@ -95,45 +95,45 @@
       "effdet0": {
         "backend": "mediapipe-cpu",
         "inputSize": 320,
-        "loadMs": 669,
+        "loadMs": 816,
         "ms": [
-          113,
-          91,
-          85
+          126,
+          83,
+          84
         ],
         "dets": "person 0.91, dog 0.55"
       },
       "yolo11n": {
         "backend": "ort-wasm",
         "inputSize": 416,
-        "loadMs": 1640,
+        "loadMs": 1368,
         "ms": [
-          143,
-          161,
-          146
+          165,
+          164,
+          209
         ],
         "dets": "person 0.89, dog 0.31"
       },
       "coco-lite": {
         "backend": "webgl",
         "inputSize": 320,
-        "loadMs": 4967,
+        "loadMs": 5046,
         "ms": [
-          365,
-          379,
-          372
+          341,
+          363,
+          389
         ],
         "dets": "dog 0.91, person 0.68, person 0.38"
       }
     },
     "yamnet": {
-      "loadMs": 1590,
+      "loadMs": 1701,
       "windows": 4,
       "ms": [
-        876,
-        86,
-        75,
-        66
+        767,
+        91,
+        77,
+        70
       ],
       "best": [
         "Animal 0.95",
@@ -144,11 +144,7 @@
         "Dog"
       ]
     },
-    "jsErrors": [
-      "console: INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
-      "console: \u001b[0;93m2026-10-10 13:42:19.625899 [W:onnxruntime:Default, cpuid_info.cc:91 LogEarlyWarning] Unknown CPU vendor. cpuinfo_vendor value: 0\u001b[m",
-      "console: INFO: Created TensorFlow Lite XNNPACK delegate for CPU."
-    ]
+    "jsErrors": []
   },
   "app": {
     "statusBefore": "READY · MEDIAPIPE-CPU · TAP START",
@@ -165,12 +161,12 @@
             0,
             0
           ],
-          "gain": 0.9835281571470902
+          "gain": 0.9837267420394682
         },
         "topSound": {
-          "index": 67,
-          "label": "Animal",
-          "score": 0.923714816570282
+          "index": 69,
+          "label": "Dog",
+          "score": 0.8123363852500916
         },
         "audioOk": true,
         "audioMsg": "YAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)",
@@ -196,13 +192,13 @@
             "zone": null
           }
         ],
-        "p50": 100.20000000298023,
-        "p95": 165.3999999910593,
-        "detRate": 2.808961555972602,
+        "p50": 103.8999999910593,
+        "p95": 164.3999999910593,
+        "detRate": 2.7781237127220555,
         "incident": {
-          "id": "incmv2omkjy1",
-          "start": 1791654158734,
-          "end": 1791654164609,
+          "id": "incmv2oq2sr1",
+          "start": 1791654322347,
+          "end": 1791654328278,
           "status": "open",
           "tracks": {
             "1": {
@@ -210,26 +206,26 @@
               "label": "person",
               "group": "person",
               "peak": 0.8901394605636597,
-              "firstSeen": 1791654153058,
-              "confirmedAt": 1791654158739,
-              "timeToConfirmMs": 5681,
-              "snapId": "snap_1_mv2omgre",
-              "lastSeen": 1791654158739
+              "firstSeen": 1791654316421,
+              "confirmedAt": 1791654316780.1,
+              "timeToConfirmMs": 359,
+              "snapId": "snap_1_mv2opyun",
+              "lastSeen": 1791654322781
             },
             "2": {
               "id": 2,
               "label": "dog",
               "group": "animal",
               "peak": 0.7039188146591187,
-              "firstSeen": 1791654153057.6,
-              "confirmedAt": 1791654158740,
-              "timeToConfirmMs": 5682.39990234375,
-              "snapId": "snap_2_mv2omgs1",
-              "lastSeen": 1791654158740
+              "firstSeen": 1791654316421.3,
+              "confirmedAt": 1791654316780.4,
+              "timeToConfirmMs": 359,
+              "snapId": "snap_2_mv2opyv9",
+              "lastSeen": 1791654322989
             }
           },
           "audio": {
-            "Dog": 0.765
+            "Dog": 0.899
           },
           "audioTop": [
             "Animal",
@@ -237,7 +233,7 @@
             "Domestic animals, pets"
           ],
           "motion": {
-            "maxFgPct": 0.65625,
+            "maxFgPct": 0.71875,
             "movers": 1,
             "cues": 1
           },
@@ -247,35 +243,35 @@
             "CONFIRMED_TRACK:animal (3/6≥0.25)"
           ],
           "events": [
-            "evmv2omfdy",
-            "evmv2omfdw",
-            "evmv2omfdx",
-            "evmv2omfdz"
+            "evmv2opxem",
+            "evmv2opxek",
+            "evmv2opxel",
+            "evmv2opxen"
           ],
           "labels": [
             "Dog",
             "person",
             "dog"
           ],
-          "maxConf": 0.8901394605636597,
+          "maxConf": 0.899,
           "correlation": {
             "type": "co-occurring",
-            "dtSec": 0,
+            "dtSec": 1,
             "note": "Audio and visual evidence co-occurred in time — possibly related. SENTINEL does not determine that they come from the same source."
           },
           "snaps": [
-            "evmv2omfdw",
-            "evmv2omfdx",
-            "snap_1_mv2omgre",
-            "snap_2_mv2omgs1"
+            "evmv2opxek",
+            "snap_1_mv2opyun",
+            "evmv2opxel",
+            "snap_2_mv2opyv9"
           ],
-          "lastAudio": 1791654158734,
-          "lastVisual": 1791654158740
+          "lastAudio": 1791654322347,
+          "lastVisual": 1791654322989
         },
         "micMode": "AudioWorklet",
         "idb": true
       },
-      "hud": "NEWTON\nSENTINEL\n2.0\n● FOREGROUND ONLY\nDET/s\n2.8\np50 ms\n100\nMOTION\n0.0%\nTRACKS\n2\nperson×1 dog×1\n🔊 Animal 92%\n⚠ INCIDENT · Dog, person, dog · 3 reason(s) · audio+visual co-occurring",
+      "hud": "NEWTON\nSENTINEL\n2.0\n● FOREGROUND ONLY\nDET/s\n2.8\np50 ms\n104\nMOTION\n0.0%\nTRACKS\n2\nperson×1 dog×1\n🔊 Dog 81%\n⚠ INCIDENT · Dog, person, dog · 3 reason(s) · audio+visual co-occurring",
       "version": "2.0.0"
     },
     "labeling": {
@@ -284,9 +280,9 @@
           "kind": "tp",
           "cls": "person",
           "conf": 0.8901394605636597,
-          "ttcMs": 324.6000000089407,
+          "ttcMs": 359.1000000089407,
           "trackId": 1,
-          "t": 1791654167783
+          "t": 1791654331841
         },
         {
           "kind": "miss",
@@ -297,15 +293,15 @@
             0.08,
             0.74
           ],
-          "t": 1791654168416
+          "t": 1791654332424
         }
       ],
-      "table": "CLASS\tTP\tFP\tMISS\tPREC\tRECALL\tF1\tFP/h\tCONFIRM s\nperson\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.3\nOVERALL\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.3"
+      "table": "CLASS\tTP\tFP\tMISS\tPREC\tRECALL\tF1\tFP/h\tCONFIRM s\nperson\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.4\nOVERALL\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.4"
     },
-    "trial": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t0\t0\t—\t—\t—\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t70%\t0.14\nperson\t1\t0\t0\t100%\t100%\t100%\t83%\t0.14\nOVERALL\t2\t0\t0\t100%\t100%\t100%\t76%\t0.14",
+    "trial": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t0\t0\t—\t—\t—\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t70%\t0.36\nperson\t1\t0\t0\t100%\t100%\t100%\t82%\t0.36\nOVERALL\t2\t0\t0\t100%\t100%\t100%\t76%\t0.36",
     "pausedHud": "■ PAUSED — NOT MONITORING",
     "diag": {
-      "stats": "Version\t2.0.0\nModel\tEfficientDet-Lite0 (MediaPipe, Apache-2.0) · input 320px (adaptive)\nBackend\tmediapipe-cpu\nDetections/s\t4.36 (render )\nDetector latency p50 / p95\t98.0 ms / 156.7 ms\npreprocess / inference / postprocess (p50)\t8.4 ms / 89.4 ms / 0.0 ms\nMotion engine p50\t26.5 ms\nAudio (YAMNet) p50 / p95\t165.8 ms / 271.5 ms\nOverlay draw p50\t0.3 ms\nFrame policy\tlatest-frame only (queue depth 1)\nSkipped detector slots (busy)\t115\nCamera frames / processed\t235 / 112 (52% not analysed)\nMemory\t47 MB JS heap · tf tensors 136 / 15.4 MB\nThermal / latency drift\tok (baseline p50 118 ms)\nAdaptive changes\tnone\nMotion\tfg 0.00% · blobs 0 · movers 0 · shake 0,0 · gain 1.00 · learning\nZones\t0 ()\nAudio\tYAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)\nMonitoring\tactive (foreground)",
+      "stats": "Version\t2.0.0\nModel\tEfficientDet-Lite0 (MediaPipe, Apache-2.0) · input 320px (adaptive)\nBackend\tmediapipe-cpu\nDetections/s\t3.92 (render )\nDetector latency p50 / p95\t102.7 ms / 159.6 ms\npreprocess / inference / postprocess (p50)\t9.0 ms / 90.1 ms / 0.0 ms\nMotion engine p50\t29.3 ms\nAudio (YAMNet) p50 / p95\t164.1 ms / 297.9 ms\nOverlay draw p50\t0.3 ms\nFrame policy\tlatest-frame only (queue depth 1)\nSkipped detector slots (busy)\t116\nCamera frames / processed\t237 / 106 (55% not analysed)\nMemory\t38 MB JS heap · tf tensors 131 / 15.3 MB\nThermal / latency drift\tok (baseline p50 107 ms)\nAdaptive changes\tnone\nMotion\tfg 0.00% · blobs 0 · movers 0 · shake 0,0 · gain 1.00 · learning\nZones\t0 ()\nAudio\tYAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)\nMonitoring\tactive (foreground)",
       "raw": [
         "CLASS\tRAW\tCLASS THR\tTRACK\tTRACK CONF\tSTATUS / REASON",
         "person\t77%\t45%\t1\t89% max\tCONFIRMED",
@@ -313,8 +309,8 @@
       ],
       "tracks": [
         "ID\tLABEL\tSTATE\tHITS (N/M)\tAGE s\tPEAK\tZONE",
-        "1\tperson\tconfirmed\t5/3 of 5\t2.6\t89%\tok",
-        "2\tdog\tconfirmed\t6/3 of 6\t2.6\t70%\tok"
+        "1\tperson\tconfirmed\t5/3 of 5\t2.7\t89%\tok",
+        "2\tdog\tconfirmed\t6/3 of 6\t2.7\t70%\tok"
       ]
     },
     "export": {
@@ -329,17 +325,17 @@
       "withGeo": 10,
       "withSnap": 7,
       "gap": [
-        "NOT monitoring for 3 s (app hidden / screen locked) from 2026-10-10T17:42:55.862Z"
+        "NOT monitoring for 3 s (app hidden / screen locked) from 2026-10-10T17:45:39.323Z"
       ],
       "sample": [
-        "2026-10-10T17:42:33.005Z manual monitoring started null",
-        "2026-10-10T17:42:33.649Z object person 0.8901",
-        "2026-10-10T17:42:33.793Z object dog 0.7039",
-        "2026-10-10T17:42:38.324Z sound Dog 0.765",
-        "2026-10-10T17:42:42.610Z motion coherent motion 0.0667",
-        "2026-10-10T17:42:47.784Z manual label tp: person 0.8901",
-        "2026-10-10T17:42:48.416Z manual label miss: person null",
-        "2026-10-10T17:42:48.616Z sound Dog 0.711"
+        "2026-10-10T17:45:16.381Z manual monitoring started null",
+        "2026-10-10T17:45:17.065Z object person 0.8901",
+        "2026-10-10T17:45:17.206Z object dog 0.7039",
+        "2026-10-10T17:45:21.909Z sound Dog 0.899",
+        "2026-10-10T17:45:26.061Z motion coherent motion 0.0719",
+        "2026-10-10T17:45:31.841Z manual label tp: person 0.8901",
+        "2026-10-10T17:45:32.424Z manual label miss: person null",
+        "2026-10-10T17:45:32.654Z sound Dog 0.721"
       ],
       "incidents": [
         {
@@ -354,11 +350,11 @@
             "CONFIRMED_TRACK:animal (3/6≥0.25)"
           ],
           "tracks": [
-            "person#1 ttc 5681",
-            "dog#2 ttc 5682.39990234375"
+            "person#1 ttc 359",
+            "dog#2 ttc 359"
           ],
           "audio": {
-            "Dog": 0.864
+            "Dog": 0.899
           },
           "correlation": "co-occurring",
           "snaps": 8
@@ -377,7 +373,7 @@
             "kind": "tp",
             "cls": "person",
             "conf": 0.89,
-            "ttcSec": 0.3
+            "ttcSec": 0.4
           },
           {
             "tSec": 3,
@@ -396,7 +392,7 @@
           "f1": 0.6666666666666666,
           "fpPerHour": 0,
           "meanConf": 0.8901394605636597,
-          "meanTimeToConfirmMs": 324.6000000089407
+          "meanTimeToConfirmMs": 359.1000000089407
         },
         "noIsoTimestamps": true,
         "noImages": true,
@@ -404,19 +400,17 @@
       },
       "anonCsv": [
         "cls,tp,fp,fn,precision,recall,f1,fpPerHour,meanConf,meanTimeToConfirmMs",
-        "person,1,0,1,1,0.5000,0.6667,0,0.8901,324.6000",
-        "OVERALL,1,0,1,1,0.5000,0.6667,0,0.8901,324.6000"
+        "person,1,0,1,1,0.5000,0.6667,0,0.8901,359.1000",
+        "OVERALL,1,0,1,1,0.5000,0.6667,0,0.8901,359.1000"
       ]
     },
-    "jsErrors": [
-      "console: INFO: Created TensorFlow Lite XNNPACK delegate for CPU."
-    ]
+    "jsErrors": []
   },
   "verdict": {
     "unit core": true,
     "unit v2": true,
     "harness": true,
-    "no JS errors": false,
+    "no JS errors": true,
     "version 2.0": true,
     "confirmed person+dog tracks": true,
     "object events + incident": true,
@@ -426,5 +420,5 @@
     "exports valid": true,
     "anonymised export clean": true
   },
-  "allPass": false
+  "allPass": true
 }

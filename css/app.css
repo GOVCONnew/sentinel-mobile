@@ -70,3 +70,4 @@ table.kv td:first-child { color: var(--muted); } table.kv td { text-align: left;
 .inc { border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin: 6px 0; font-size: 13px; } .inc .thumbs img { width: 72px; height: 54px; object-fit: cover; margin-right: 4px; border-radius: 4px; }
 .inc .rc { color: var(--warn); font-size: 11px; } .inc .co { color: #00E5FF; font-size: 11px; }
 #tabs button { font-size: 10px; letter-spacing: .06em; }
+.log-list li.inc { display: block; } .inc > div { margin: 2px 0; }

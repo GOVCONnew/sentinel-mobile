@@ -8,7 +8,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 0.12
+   "msPerFrame": 0.08
   },
   "v2": {
    "alerts": [],
@@ -16,7 +16,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 3.4
+   "msPerFrame": 3.35
   }
  },
  "synth_sway_strong": {
@@ -31,7 +31,7 @@
    "falsePerMin": 8.571428571428571,
    "detected": null,
    "delay": null,
-   "msPerFrame": 0.05
+   "msPerFrame": 0.04
   },
   "v2": {
    "alerts": [],
@@ -39,7 +39,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 3.7
+   "msPerFrame": 3.39
   }
  },
  "synth_sunflicker": {
@@ -62,7 +62,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 2.78
+   "msPerFrame": 3.21
   }
  },
  "synth_light": {
@@ -74,7 +74,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 0.04
+   "msPerFrame": 0.05
   },
   "v2": {
    "alerts": [],
@@ -82,7 +82,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 2.46
+   "msPerFrame": 2.49
   }
  },
  "synth_shadow": {
@@ -102,7 +102,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 2.46
+   "msPerFrame": 2.38
   }
  },
  "synth_shake": {
@@ -125,7 +125,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 2.47
+   "msPerFrame": 2.42
   }
  },
  "synth_sway_light_shake": {
@@ -137,7 +137,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 0.04
+   "msPerFrame": 0.03
   },
   "v2": {
    "alerts": [],
@@ -145,7 +145,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 3.99
+   "msPerFrame": 3.19
   }
  },
  "pos_intruder_sway": {
@@ -160,7 +160,7 @@
    "falsePerMin": 4.285714285714286,
    "detected": true,
    "delay": 6.1,
-   "msPerFrame": 0.06
+   "msPerFrame": 0.05
   },
   "v2": {
    "alerts": [],
@@ -168,7 +168,7 @@
    "falsePerMin": 0,
    "detected": false,
    "delay": null,
-   "msPerFrame": 2.75
+   "msPerFrame": 2.57
   }
  },
  "pos_intruder_shake_light": {
@@ -190,7 +190,7 @@
    "falsePerMin": 0,
    "detected": true,
    "delay": 1,
-   "msPerFrame": 2.71
+   "msPerFrame": 2.44
   }
  },
  "foliage_wind_1": {
@@ -210,7 +210,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 2.46
+   "msPerFrame": 2.47
   }
  },
  "foliage_wind_2": {
@@ -232,7 +232,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 2.47
+   "msPerFrame": 2.87
   }
  },
  "foliage_wind_3": {
@@ -244,7 +244,7 @@
    "falsePerMin": 0,
    "detected": null,
    "delay": null,
-   "msPerFrame": 0.04
+   "msPerFrame": 0.03
   },
   "v2": {
    "alerts": [],
@@ -264,7 +264,7 @@
    "falsePerMin": 0,
    "detected": false,
    "delay": null,
-   "msPerFrame": 0.04
+   "msPerFrame": 0.03
   },
   "v2": {
    "alerts": [
@@ -274,7 +274,7 @@
    "falsePerMin": 0,
    "detected": true,
    "delay": 0.3,
-   "msPerFrame": 2.41
+   "msPerFrame": 2.46
   }
  }
 }
