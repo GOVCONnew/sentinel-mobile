@@ -1,0 +1,217 @@
+{
+  "unit": {
+    "pass": 21,
+    "fail": 0,
+    "out": [
+      "PASS motion identical = 0%",
+      "PASS motion differing ≈ 8.33% — 8.333",
+      "PASS motion ROI box excludes change",
+      "PASS motion ROI grid includes change",
+      "PASS low sensitivity ignores small drift",
+      "PASS max sensitivity sees drift",
+      "PASS scene change — {\"meanPct\":3.2679738562091503,\"changedPct\":8.333333333333334}",
+      "PASS debounce",
+      "PASS tracker confirms once",
+      "PASS person tp/fp/fn = 1/2/1 — {\"tp\":1,\"fp\":2,\"fn\":1,\"precision\":0.3333333333333333,\"recall\":0.5,\"f1\":0.4,\"meanConf\":0.7000000000000001,\"meanTTFDms\":1000,\"trials\":3}",
+      "PASS person precision 1/3, recall 1/2, f1 0.4",
+      "PASS person meanConf (0.9+0.7+0.5)/3",
+      "PASS person TTFD 1000ms",
+      "PASS dog tp1 fn1 fp0, P=1 R=.5",
+      "PASS cat (not in truth) = FP",
+      "PASS backpack TP + manual miss",
+      "PASS overall tp3 fp3 fn3 P.5 R.5 TTFD1500 — {\"tp\":3,\"fp\":3,\"fn\":3,\"precision\":0.5,\"recall\":0.5,\"f1\":0.5,\"meanConf\":0.65,\"meanTTFDms\":1500,\"trials\":4}",
+      "PASS metrics CSV rows — label,trials,tp,fp,fn,precision,recall,f1,meanConf,meanTTFDms",
+      "PASS csv escaping",
+      "PASS events CSV — e1,2026-10-10T00:00:00.000Z,sound,Bird,0.5000,\"YAMNet: Bird, \"\"x\"\"\",1,2,3,snapshots/e1.jpg",
+      "PASS trials CSV"
+    ]
+  },
+  "harness": {
+    "done": true,
+    "ok": true,
+    "checks": {
+      "coco lite_mobilenet_v2 person+dog": {
+        "pass": true,
+        "info": "dog 0.87, person 0.73 | load 5382ms infer 490/340/343ms"
+      },
+      "coco mobilenet_v2 person+dog": {
+        "pass": true,
+        "info": "dog 0.86, person 0.80 | load 2875ms infer 812/839/975ms"
+      },
+      "no tensor leak (detector)": {
+        "pass": true,
+        "info": "Δ0"
+      },
+      "motion identical frames → none": {
+        "pass": true,
+        "info": "0.00%"
+      },
+      "motion differing frames → triggers (≥3%)": {
+        "pass": true,
+        "info": "34.63%, scene Δ 14.4%"
+      },
+      "yamnet dog bark → Dog/Bark/Animal class in top-3": {
+        "pass": true,
+        "info": "Animal 0.95, Domestic animals, pets 0.91, Dog 0.91"
+      }
+    },
+    "errors": [],
+    "models": {
+      "lite_mobilenet_v2": {
+        "loadMs": 5382,
+        "inferMs": [
+          490,
+          340,
+          343
+        ],
+        "dets": "dog 0.87, person 0.73"
+      },
+      "mobilenet_v2": {
+        "loadMs": 2875,
+        "inferMs": [
+          812,
+          839,
+          975
+        ],
+        "dets": "dog 0.86, person 0.80"
+      }
+    },
+    "backend": "webgl",
+    "yamnet": {
+      "loadMs": 1574,
+      "windows": 4,
+      "inferMs": [
+        614,
+        82,
+        71,
+        65
+      ],
+      "perWindowTop3": [
+        "Dog 0.73, Domestic animals, pets 0.71, Animal 0.55",
+        "Animal 0.87, Dog 0.80, Domestic animals, pets 0.78",
+        "Animal 0.95, Domestic animals, pets 0.91, Dog 0.91",
+        "Animal 0.82, Dog 0.71, Domestic animals, pets 0.70"
+      ],
+      "bestOverall": [
+        "Animal 0.95",
+        "Domestic animals, pets 0.91",
+        "Dog 0.91"
+      ]
+    },
+    "jsErrors": []
+  },
+  "app": {
+    "live": {
+      "state": {
+        "running": true,
+        "motionPct": 0,
+        "scene": {
+          "meanPct": 0,
+          "changedPct": 0
+        },
+        "topSound": {
+          "index": 69,
+          "label": "Dog",
+          "score": 0.7297357320785522,
+          "ms": 170.70000000298023
+        },
+        "detMs": 382.2169875763477,
+        "fps": 2.079670689770849,
+        "renderFps": 33.418416921220114,
+        "lastDets": [
+          "dog 0.73",
+          "person 0.67"
+        ],
+        "audioOk": true,
+        "audioMsg": "YAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)",
+        "backend": "webgl",
+        "micMode": "AudioWorklet",
+        "idb": true
+      },
+      "hud": "NEWTON\nSENTINEL\nFPS\n2.0\nDET ms\n383\nMOTION\n0.0%\nOBJ\n2\ndog×1 person×1\n🔊 Dog 73%",
+      "sound": "Dog\n73%\nAnimal\n73%\nDomestic animals, pets\n67%\nYAMNet 171 ms",
+      "tensors": 393,
+      "tensorsLater": 393
+    },
+    "fieldTest": {
+      "trials": [
+        {
+          "truth": {
+            "person": true,
+            "dog": true,
+            "backpack": false
+          },
+          "nDets": 24,
+          "labels": [
+            "dog",
+            "person"
+          ],
+          "marks": [
+            {
+              "kind": "fp",
+              "label": "backpack",
+              "t": 1791640075133
+            }
+          ]
+        }
+      ],
+      "table": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t1\t0\t0%\t—\t0%\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t80%\t0.38\nperson\t1\t0\t0\t100%\t100%\t100%\t68%\t0.38\nOVERALL\t2\t1\t0\t67%\t100%\t80%\t74%\t0.38"
+    },
+    "export": {
+      "nEvents": 10,
+      "types": [
+        "object",
+        "motion",
+        "manual",
+        "sound"
+      ],
+      "withGeo": 8,
+      "withSnap": 10,
+      "sample": [
+        "2026-10-10T13:47:31.537Z object person 0.6826",
+        "2026-10-10T13:47:31.572Z object dog 0.8547",
+        "2026-10-10T13:47:32.912Z motion motion 0.4142",
+        "2026-10-10T13:47:37.489Z manual reference set null",
+        "2026-10-10T13:47:37.564Z sound Dog 0.8392",
+        "2026-10-10T13:47:44.909Z motion motion 0.4142"
+      ],
+      "csvHeader": "id,ts,type,label,confidence,detail,lat,lon,acc_m,snapshot",
+      "csvRows": 10,
+      "csvValid": true,
+      "jsonValid": true,
+      "zipFiles": 16,
+      "zipSample": [
+        "events.csv",
+        "events.json",
+        "fieldtest_metrics.csv",
+        "fieldtest_trials.csv",
+        "fieldtest.json",
+        "snapshots/"
+      ],
+      "fieldJsonMetrics": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.6666666666666666,
+        "recall": 1,
+        "f1": 0.8,
+        "meanConf": 0.7416083333333333,
+        "meanTTFDms": 378,
+        "trials": 1
+      },
+      "fieldCsv": [
+        "label,trials,tp,fp,fn,precision,recall,f1,meanConf,meanTTFDms",
+        "backpack,1,0,1,0,0,,0,,",
+        "dog,1,1,0,0,1,1,1,0.8046,378",
+        "person,1,1,0,0,1,1,1,0.6786,378",
+        "OVERALL,1,2,1,0,0.6667,1,0.8000,0.7416,378"
+      ],
+      "downloadLinks": [
+        "⬇ sentinel_2026-10-10T13-48-02.zip",
+        "⬇ sentinel_fieldtest_metrics_2026-10-10T13-48-03.csv",
+        "⬇ sentinel_fieldtest_trials_2026-10-10T13-48-03.csv"
+      ]
+    },
+    "jsErrors": []
+  }
+}

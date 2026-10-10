@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SENTINEL">
+<meta name="theme-color" content="#000000">
+<meta name="format-detection" content="telephone=no">
+<title>NEWTON · SENTINEL Mobile</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<!-- Splash / start gate (iOS needs a user gesture for camera, mic, audio context, wake lock) -->
+<div id="splash">
+  <div class="brandbig"><span class="logo">NEWTON</span><span class="sub">SENTINEL</span><span class="tag">Field wildlife &amp; activity detection · on-device</span></div>
+  <div id="status" class="status">LOADING…</div>
+  <div id="caps" class="caps"></div>
+  <label class="chk"><input type="checkbox" id="splash-mic" checked> Enable microphone (sound classification)</label>
+  <button id="btn-start" class="btn primary big">START</button>
+  <button class="btn ghost" data-goto="help" id="btn-splash-help">Permissions &amp; HTTPS help</button>
+</div>
+
+<main>
+  <!-- LIVE -->
+  <section id="tab-live" class="tab active">
+    <div id="stage">
+      <video id="cam" playsinline muted autoplay webkit-playsinline></video>
+      <canvas id="overlay"></canvas>
+      <div id="hud" class="hud">
+        <div class="brand"><span class="logo">NEWTON</span><span class="sub">SENTINEL</span></div>
+        <div class="stats">
+          <div class="stat"><span class="k">FPS</span><span class="v" id="h-fps">--</span></div>
+          <div class="stat"><span class="k">DET ms</span><span class="v" id="h-ms">--</span></div>
+          <div class="stat"><span class="k">MOTION</span><span class="v" id="h-mot">0%</span></div>
+          <div class="stat"><span class="k">OBJ</span><span class="v" id="h-cnt">0</span></div>
+        </div>
+        <div class="hudrow"><span id="h-counts" class="counts"></span><span id="h-sound" class="sound">🔇 —</span></div>
+        <div id="trialbar" class="trialbar hidden">TRIAL <b id="trial-num"></b> · <b id="trial-left">--</b>s
+          <select id="mark-label"></select><button id="btn-mark-fp" class="btn sm warn">MARK FP</button><button id="btn-mark-miss" class="btn sm warn">MARK MISS</button></div>
+        <div id="roi-hint" class="roihint hidden"></div>
+      </div>
+    </div>
+    <div id="livepanel" class="panel">
+      <div class="row">
+        <button id="btn-run" class="btn primary">PAUSE</button>
+        <button id="btn-ref" class="btn">SET REF</button>
+        <button id="btn-snap" class="btn">SNAP</button>
+        <button id="btn-roi" class="btn">ROI</button>
+        <button id="btn-heat" class="btn">HEAT</button>
+      </div>
+      <div class="meters">
+        <div class="meter"><span>Motion</span><div class="bar"><i id="m-mot"></i></div><b id="m-mot-v">0%</b></div>
+        <div class="meter"><span>Scene Δ</span><div class="bar"><i id="m-scene"></i></div><b id="m-scene-v">no ref</b></div>
+        <div class="meter"><span>Mic</span><div class="bar"><i id="m-lvl"></i></div><b id="m-lvl-v">--</b></div>
+      </div>
+      <div id="sound-panel" class="sound-panel"><div class="muted">Sound classifier idle</div></div>
+      <ul id="live-events" class="mini-log"></ul>
+    </div>
+  </section>
+
+  <!-- LOG -->
+  <section id="tab-log" class="tab">
+    <h2>Event Log <small id="log-count"></small></h2>
+    <div class="row wrap">
+      <button class="btn" id="exp-ev-csv">CSV</button><button class="btn" id="exp-ev-json">JSON</button>
+      <button class="btn" id="exp-zip">ZIP + snapshots</button><button class="btn" id="exp-share">SHARE</button>
+      <button class="btn danger" id="log-clear">CLEAR</button>
+    </div>
+    <div class="row wrap filters">
+      <label class="chk"><input type="checkbox" class="lf" value="object" checked>Objects</label>
+      <label class="chk"><input type="checkbox" class="lf" value="motion" checked>Motion</label>
+      <label class="chk"><input type="checkbox" class="lf" value="sound" checked>Sound</label>
+      <label class="chk"><input type="checkbox" class="lf" value="manual" checked>Manual</label>
+    </div>
+    <div id="dl-links" class="dl-links"></div>
+    <ul id="log-list" class="log-list"></ul>
+  </section>
+
+  <!-- FIELD TEST -->
+  <section id="tab-field" class="tab">
+    <h2>Field Test</h2>
+    <div class="card">
+      <label>Session name <input id="ft-name" type="text" value="Field session"></label>
+      <div class="muted">Test objects (description → COCO class scored)</div>
+      <div id="ft-objects"></div>
+      <div class="row"><input id="ft-new-desc" type="text" placeholder="e.g. person at 10m"><select id="ft-new-cls"></select><button class="btn sm" id="ft-add">ADD</button></div>
+      <label>Trial duration <input id="ft-dur" type="number" min="3" max="600" value="15"> s</label>
+    </div>
+    <div class="card">
+      <div class="muted">Ground truth for next trial — tick what is ACTUALLY in view (unticked = absent):</div>
+      <div id="ft-truth" class="chips"></div>
+      <div class="row"><button class="btn primary" id="ft-start">START TRIAL</button><button class="btn" id="ft-stop" disabled>STOP</button></div>
+      <div id="ft-status" class="muted"></div>
+    </div>
+    <h3>Session summary</h3>
+    <div class="tablewrap"><table id="ft-table"></table></div>
+    <h3>Trials</h3>
+    <div class="tablewrap"><table id="ft-trials"></table></div>
+    <div class="row wrap"><button class="btn" id="ft-csv">Results CSV</button><button class="btn" id="ft-json">Results JSON</button><button class="btn" id="ft-share">SHARE</button><button class="btn danger" id="ft-reset">RESET SESSION</button></div>
+    <div id="ft-links" class="dl-links"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="tab-settings" class="tab">
+    <h2>Settings</h2>
+    <div class="card">
+      <h3>Object detection</h3>
+      <label>Model <select id="s-model"><option value="lite_mobilenet_v2">COCO-SSD lite_mobilenet_v2 (fast)</option><option value="mobilenet_v2">COCO-SSD mobilenet_v2 (accurate)</option></select></label>
+      <label>Confidence threshold <input id="s-thr" type="range" min="0.2" max="0.9" step="0.05"> <b id="s-thr-v"></b></label>
+      <div id="s-classes"></div>
+    </div>
+    <div class="card">
+      <h3>Motion</h3>
+      <label>Sensitivity <input id="s-sens" type="range" min="0" max="100" step="1"> <b id="s-sens-v"></b></label>
+      <label>Log motion event when ≥ <input id="s-mtrig" type="range" min="0.5" max="30" step="0.5"> <b id="s-mtrig-v"></b></label>
+      <label class="chk"><input type="checkbox" id="s-heat"> Show motion heatmap overlay</label>
+      <label>Region of interest <select id="s-roi"><option value="off">Off (full frame)</option><option value="box">Box (drag on Live view)</option><option value="grid">Grid 4×4 (tap cells on Live view)</option></select></label>
+      <button class="btn sm" id="s-roi-clear">Reset ROI</button>
+    </div>
+    <div class="card">
+      <h3>Sound</h3>
+      <label class="chk"><input type="checkbox" id="s-audio"> Sound classification (YAMNet)</label>
+      <label>Watch-list threshold <input id="s-athr" type="range" min="0.05" max="0.9" step="0.05"> <b id="s-athr-v"></b></label>
+      <div class="muted">Watch list (matches YAMNet class names containing the term):</div>
+      <div id="s-watch" class="chips"></div>
+      <div class="row"><input id="s-watch-new" type="text" placeholder="add term, e.g. Owl"><button class="btn sm" id="s-watch-add">ADD</button></div>
+    </div>
+    <div class="card">
+      <h3>Logging &amp; power</h3>
+      <label>Event debounce <input id="s-deb" type="number" min="1" max="120"> s</label>
+      <label class="chk"><input type="checkbox" id="s-snap"> Save snapshot with each event (IndexedDB)</label>
+      <label class="chk"><input type="checkbox" id="s-geo"> Tag events with GPS location</label>
+      <label class="chk"><input type="checkbox" id="s-low"> Low-power mode (≈1 detection/s, slower audio)</label>
+      <div id="s-env" class="muted mono"></div>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section id="tab-help" class="tab">
+    <h2>Help · Permissions</h2>
+    <div class="card help">
+      <h3>1 · HTTPS is required</h3>
+      <p>iOS Safari only allows camera and microphone on secure (HTTPS) pages. SENTINEL is served from GitHub Pages over HTTPS: <b>https://govconnew.github.io/sentinel-mobile/</b>. Opening a local file or plain-http URL will not work.</p>
+      <h3>2 · Tap START</h3>
+      <p>Safari needs a tap before it can start the camera, microphone and audio engine. Tap <b>START</b> on the splash screen, then choose <b>Allow</b> for Camera and Microphone.</p>
+      <h3>3 · Denied by mistake?</h3>
+      <p>Tap <b>aA</b> in the Safari address bar → <b>Website Settings</b> → set Camera and Microphone to <b>Allow</b>, then reload. Or open <b>Settings › Apps › Safari › Camera</b> / <b>Microphone</b> (older iOS: Settings › Safari) and choose Ask or Allow. Location (optional GPS tagging) is under <b>Settings › Privacy &amp; Security › Location Services › Safari Websites</b>.</p>
+      <h3>4 · Add to Home Screen</h3>
+      <p>Share button → <b>Add to Home Screen</b> runs SENTINEL fullscreen without browser bars. Permissions may be asked again the first time it runs from the Home Screen.</p>
+      <h3>5 · Keep the screen on</h3>
+      <p>SENTINEL requests a screen wake lock (iOS 16.4+) and plays a silent muted video as fallback. For long watches also set <b>Settings › Display &amp; Brightness › Auto-Lock › Never</b> and keep the phone on power. If the screen locks or you switch apps, iOS stops the camera/mic — return and tap Resume.</p>
+      <h3>6 · Silent switch &amp; audio</h3>
+      <p>The ring/silent switch does <b>not</b> block microphone input; SENTINEL never plays sound. Phone calls, Siri or another app using the mic will interrupt sound classification. Orange dot = mic in use, green dot = camera in use.</p>
+      <h3>7 · Fallbacks</h3>
+      <p>No WebGL → WASM/CPU backend (slower). No microphone → sound panel disabled. No IndexedDB (e.g. some Private modes) → snapshots off. No file sharing → download links instead. Everything runs on-device; nothing is uploaded. Models load once from CDN / this site and are then browser-cached.</p>
+      <h3>Models</h3>
+      <p>COCO-SSD 2.2.3 (TF.js, 80 COCO classes) via jsDelivr. YAMNet (Google, AudioSet 521 classes) vendored in this site under <span class="mono">models/yamnet/</span>. Detections are approximate — COCO has no deer/fox/boar classes; such animals may be reported as the nearest class (dog, horse, cow, sheep, bear).</p>
+      <div id="help-env" class="mono muted"></div>
+    </div>
+  </section>
+</main>
+
+<nav id="tabs">
+  <button data-tab="live" class="active">LIVE</button><button data-tab="log">LOG</button><button data-tab="field">FIELD TEST</button><button data-tab="settings">SETTINGS</button><button data-tab="help">HELP</button>
+</nav>
+<div id="toast" class="toast hidden"></div>
+<video id="nosleep" src="media/nosleep.mp4" playsinline muted loop style="position:absolute;width:1px;height:1px;opacity:0.01;left:-10px"></video>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="js/core.js"></script>
+<script src="js/detector.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

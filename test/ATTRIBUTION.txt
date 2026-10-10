@@ -1,0 +1,1 @@
+dog_bark.wav: 'Barking of a dog' by Amada44, Wikimedia Commons, CC BY-SA 3.0 (converted to 16kHz mono, first 6s). person_dog.jpg: from cqb-sight test assets (public domain).

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SENTINEL · model test harness</title><link rel="icon" href="../icons/icon-192.png"><link rel="stylesheet" href="../css/app.css">
+<style>html,body{overflow:auto;height:auto}body{padding:16px;-webkit-user-select:text;user-select:text}.panels{display:flex;gap:14px;flex-wrap:wrap}.p{border:1px solid var(--line);border-radius:10px;padding:8px}.p h3{margin:0 0 6px}pre{font-size:11px;background:#0a0f06;border:1px solid var(--line);padding:8px;white-space:pre-wrap;max-width:1300px}</style></head>
+<body><h2>NEWTON · SENTINEL <small>model test harness</small></h2><div id="verdict" class="muted">running…</div>
+<div class="panels"><div class="p"><h3>A · COCO-SSD lite</h3><canvas id="cA" style="width:380px;height:534px"></canvas></div>
+<div class="p"><h3>B · COCO-SSD mobilenet_v2</h3><canvas id="cB" style="width:380px;height:534px"></canvas></div>
+<div class="p"><h3>C · Motion: shifted frame heatmap</h3><canvas id="cM" style="width:320px;height:240px"></canvas><div id="mtxt" class="muted"></div></div>
+<div class="p"><h3>D · YAMNet on dog_bark.wav</h3><div id="yam" style="width:320px"></div></div></div>
+<pre id="log"></pre>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+<script>window.SENTINEL_BASE = '../';</script>
+<script src="../js/core.js"></script><script src="../js/detector.js"></script><script src="../js/audio.js"></script>
+<script>
+(async function () {
+  var out = window.__harness = { done: false, ok: false, checks: {}, errors: [] }, L = document.getElementById('log');
+  function log(s) { L.textContent += s + '\n'; }
+  function chk(n, c, info) { out.checks[n] = { pass: !!c, info: info }; log((c ? 'PASS ' : 'FAIL ') + n + ' — ' + info); }
+  async function img(src) { var i = new Image(); i.src = src; await i.decode(); return i; }
+  function draw(id, im, ds) { var cv = document.getElementById(id), d = devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight; cv.width = w * d; cv.height = h * d; var c = cv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0); var T = SDet.containTransform(im.naturalWidth, im.naturalHeight, w, h); c.drawImage(im, T.ox, T.oy, im.naturalWidth * T.s, im.naturalHeight * T.s); ds.forEach(function (x) { SDet.drawBox(c, SDet.toView(x, T), x, 1); }); }
+  try {
+    var im = await img('person_dog.jpg'), W = im.naturalWidth, H = im.naturalHeight;
+    out.models = {};
+    for (var base of ['lite_mobilenet_v2', 'mobilenet_v2']) {
+      var t0 = performance.now(); await SDet.loadModel(base); var lm = performance.now() - t0, ts = [], ds;
+      for (var i = 0; i < 3; i++) { var t1 = performance.now(); ds = await SDet.detect(im, W, H, { minScore: 0.4, longSide: 320 }); ts.push(Math.round(performance.now() - t1)); }
+      var s = ds.map(function (d) { return d.cls + ' ' + d.score.toFixed(2); }).join(', ');
+      out.models[base] = { loadMs: Math.round(lm), inferMs: ts, dets: s };
+      draw(base === 'lite_mobilenet_v2' ? 'cA' : 'cB', im, ds);
+      chk('coco ' + base + ' person+dog', ds.some(function (d) { return d.cls === 'person'; }) && ds.some(function (d) { return d.cls === 'dog'; }), s + ' | load ' + Math.round(lm) + 'ms infer ' + ts.join('/') + 'ms');
+    }
+    out.backend = tf.getBackend();
+    var t = tf.memory().numTensors; for (var j = 0; j < 10; j++) await SDet.detect(im, W, H, { minScore: 0.4 }); chk('no tensor leak (detector)', tf.memory().numTensors - t <= 0, 'Δ' + (tf.memory().numTensors - t));
+    // ---- motion ----
+    var MW = 80, MH = 60, cv = document.createElement('canvas'); cv.width = MW; cv.height = MH; var cx = cv.getContext('2d', { willReadFrequently: true });
+    function gray(dx) { cx.fillStyle = '#000'; cx.fillRect(0, 0, MW, MH); cx.drawImage(im, dx, 0, MW, MH); return SCore.toGray(cx.getImageData(0, 0, MW, MH).data, MW, MH); }
+    var g0 = gray(0), g0b = gray(0), g1 = gray(6);
+    var same = SCore.motion(g0, g0b, MW, MH, 60), diff = SCore.motion(g0, g1, MW, MH, 60), sc = SCore.sceneChange(g0, g1, null, MW, MH);
+    chk('motion identical frames → none', same.pct === 0, same.pct.toFixed(2) + '%'); chk('motion differing frames → triggers (≥3%)', diff.pct >= 3, diff.pct.toFixed(2) + '%, scene Δ ' + sc.meanPct.toFixed(1) + '%');
+    var mc = document.getElementById('cM'), mx = mc.getContext('2d'); mc.width = 320; mc.height = 240; mx.drawImage(im, 6 * 4, 0, 320, 240); mx.fillStyle = 'rgba(255,40,0,.55)';
+    for (var k = 0; k < diff.mask.length; k++) if (diff.mask[k]) mx.fillRect((k % MW) * 4, ((k / MW) | 0) * 4, 4, 4);
+    document.getElementById('mtxt').textContent = 'identical: ' + same.pct.toFixed(2) + '% · shifted 6px: ' + diff.pct.toFixed(2) + '%';
+    // ---- YAMNet ----
+    var t2 = performance.now(); await SAudio.load(); var yl = performance.now() - t2;
+    var buf = await (await fetch('dog_bark.wav')).arrayBuffer(), dv = new DataView(buf), off = 12, pcm = null, rate = 16000;
+    while (off < buf.byteLength) { var id = String.fromCharCode(dv.getUint8(off), dv.getUint8(off + 1), dv.getUint8(off + 2), dv.getUint8(off + 3)), sz = dv.getUint32(off + 4, true); if (id === 'fmt ') rate = dv.getUint32(off + 12, true); if (id === 'data') { pcm = new Int16Array(buf.slice(off + 8, off + 8 + sz)); break; } off += 8 + sz; }
+    var wave = Float32Array.from(pcm, function (v) { return v / 32768; }); if (rate !== 16000) wave = SAudio.resample(wave, rate, 16000);
+    var res = [], best = {};
+    for (var st = 0; st + SAudio.WIN <= wave.length; st += 8000) { var r = await SAudio.classify(wave.subarray(st, st + SAudio.WIN), 3); res.push(r); r.top.forEach(function (x) { best[x.label] = Math.max(best[x.label] || 0, x.score); }); }
+    var ranked = Object.keys(best).sort(function (a, b) { return best[b] - best[a]; }).slice(0, 5);
+    out.yamnet = { loadMs: Math.round(yl), windows: res.length, inferMs: res.map(function (r) { return Math.round(r.ms); }), perWindowTop3: res.map(function (r) { return r.top.map(function (x) { return x.label + ' ' + x.score.toFixed(2); }).join(', '); }), bestOverall: ranked.map(function (l) { return l + ' ' + best[l].toFixed(2); }) };
+    document.getElementById('yam').innerHTML = '<div class="muted">' + wave.length + ' samples @16k · ' + res.length + ' windows · load ' + Math.round(yl) + 'ms</div>' + ranked.map(function (l) { return '<div class="srow"><span>' + l + '</span><div class="bar"><i style="width:' + best[l] * 100 + '%"></i></div><b>' + Math.round(best[l] * 100) + '%</b></div>'; }).join('');
+    chk('yamnet dog bark → Dog/Bark/Animal class in top-3', res.some(function (r) { return r.top.some(function (x) { return /dog|bark|bow-wow|animal|domestic/i.test(x.label); }); }), out.yamnet.bestOverall.join(', '));
+    var ok = Object.keys(out.checks).every(function (k) { return out.checks[k].pass; }); out.ok = ok;
+    document.getElementById('verdict').innerHTML = ok ? '<b style="color:var(--acid)">ALL HARNESS CHECKS PASSED</b> · backend ' + out.backend : '<b style="color:var(--danger)">SOME CHECKS FAILED</b>';
+  } catch (e) { out.errors.push(String(e && e.stack || e)); log('ERROR ' + e); }
+  out.done = true;
+})();
+</script></body></html>
