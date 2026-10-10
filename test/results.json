@@ -32,11 +32,11 @@
     "checks": {
       "coco lite_mobilenet_v2 person+dog": {
         "pass": true,
-        "info": "dog 0.87, person 0.73 | load 5382ms infer 490/340/343ms"
+        "info": "dog 0.87, person 0.73 | load 5364ms infer 526/340/361ms"
       },
       "coco mobilenet_v2 person+dog": {
         "pass": true,
-        "info": "dog 0.86, person 0.80 | load 2875ms infer 812/839/975ms"
+        "info": "dog 0.86, person 0.80 | load 3213ms infer 932/802/882ms"
       },
       "no tensor leak (detector)": {
         "pass": true,
@@ -58,33 +58,33 @@
     "errors": [],
     "models": {
       "lite_mobilenet_v2": {
-        "loadMs": 5382,
+        "loadMs": 5364,
         "inferMs": [
-          490,
+          526,
           340,
-          343
+          361
         ],
         "dets": "dog 0.87, person 0.73"
       },
       "mobilenet_v2": {
-        "loadMs": 2875,
+        "loadMs": 3213,
         "inferMs": [
-          812,
-          839,
-          975
+          932,
+          802,
+          882
         ],
         "dets": "dog 0.86, person 0.80"
       }
     },
     "backend": "webgl",
     "yamnet": {
-      "loadMs": 1574,
+      "loadMs": 2012,
       "windows": 4,
       "inferMs": [
-        614,
-        82,
-        71,
-        65
+        757,
+        90,
+        70,
+        68
       ],
       "perWindowTop3": [
         "Dog 0.73, Domestic animals, pets 0.71, Animal 0.55",
@@ -110,17 +110,17 @@
           "changedPct": 0
         },
         "topSound": {
-          "index": 69,
-          "label": "Dog",
-          "score": 0.7297357320785522,
-          "ms": 170.70000000298023
+          "index": 0,
+          "label": "Speech",
+          "score": 0.6387641429901123,
+          "ms": 301.70000000298023
         },
-        "detMs": 382.2169875763477,
-        "fps": 2.079670689770849,
-        "renderFps": 33.418416921220114,
+        "detMs": 378.7278449949466,
+        "fps": 2.0738424252600645,
+        "renderFps": 30.26514652107854,
         "lastDets": [
-          "dog 0.73",
-          "person 0.67"
+          "dog 0.85",
+          "person 0.68"
         ],
         "audioOk": true,
         "audioMsg": "YAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)",
@@ -128,8 +128,8 @@
         "micMode": "AudioWorklet",
         "idb": true
       },
-      "hud": "NEWTON\nSENTINEL\nFPS\n2.0\nDET ms\n383\nMOTION\n0.0%\nOBJ\n2\ndog×1 person×1\n🔊 Dog 73%",
-      "sound": "Dog\n73%\nAnimal\n73%\nDomestic animals, pets\n67%\nYAMNet 171 ms",
+      "hud": "NEWTON\nSENTINEL\nFPS\n1.9\nDET ms\n375\nMOTION\n0.0%\nOBJ\n2\ndog×1 person×1\n🔊 Speech 64%",
+      "sound": "Speech\n64%\nInside, small room\n8%\nDog\n3%\nYAMNet 302 ms",
       "tensors": 393,
       "tensorsLater": 393
     },
@@ -141,7 +141,7 @@
             "dog": true,
             "backpack": false
           },
-          "nDets": 24,
+          "nDets": 22,
           "labels": [
             "dog",
             "person"
@@ -150,36 +150,36 @@
             {
               "kind": "fp",
               "label": "backpack",
-              "t": 1791640075133
+              "t": 1791640233364
             }
           ]
         }
       ],
-      "table": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t1\t0\t0%\t—\t0%\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t80%\t0.38\nperson\t1\t0\t0\t100%\t100%\t100%\t68%\t0.38\nOVERALL\t2\t1\t0\t67%\t100%\t80%\t74%\t0.38"
+      "table": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t1\t0\t0%\t—\t0%\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t79%\t0.37\nperson\t1\t0\t0\t100%\t100%\t100%\t68%\t0.37\nOVERALL\t2\t1\t0\t67%\t100%\t80%\t73%\t0.37"
     },
     "export": {
-      "nEvents": 10,
+      "nEvents": 11,
       "types": [
         "object",
         "motion",
-        "manual",
-        "sound"
+        "sound",
+        "manual"
       ],
-      "withGeo": 8,
-      "withSnap": 10,
+      "withGeo": 9,
+      "withSnap": 11,
       "sample": [
-        "2026-10-10T13:47:31.537Z object person 0.6826",
-        "2026-10-10T13:47:31.572Z object dog 0.8547",
-        "2026-10-10T13:47:32.912Z motion motion 0.4142",
-        "2026-10-10T13:47:37.489Z manual reference set null",
-        "2026-10-10T13:47:37.564Z sound Dog 0.8392",
-        "2026-10-10T13:47:44.909Z motion motion 0.4142"
+        "2026-10-10T13:50:12.675Z object person 0.6826",
+        "2026-10-10T13:50:12.714Z object dog 0.8547",
+        "2026-10-10T13:50:15.675Z motion motion 0.4142",
+        "2026-10-10T13:50:15.993Z sound Dog 0.6785",
+        "2026-10-10T13:50:16.020Z manual reference set null",
+        "2026-10-10T13:50:24.271Z sound Speech 0.6388"
       ],
       "csvHeader": "id,ts,type,label,confidence,detail,lat,lon,acc_m,snapshot",
-      "csvRows": 10,
+      "csvRows": 11,
       "csvValid": true,
       "jsonValid": true,
-      "zipFiles": 16,
+      "zipFiles": 17,
       "zipSample": [
         "events.csv",
         "events.json",
@@ -195,21 +195,21 @@
         "precision": 0.6666666666666666,
         "recall": 1,
         "f1": 0.8,
-        "meanConf": 0.7416083333333333,
-        "meanTTFDms": 378,
+        "meanConf": 0.7332500000000001,
+        "meanTTFDms": 368,
         "trials": 1
       },
       "fieldCsv": [
         "label,trials,tp,fp,fn,precision,recall,f1,meanConf,meanTTFDms",
         "backpack,1,0,1,0,0,,0,,",
-        "dog,1,1,0,0,1,1,1,0.8046,378",
-        "person,1,1,0,0,1,1,1,0.6786,378",
-        "OVERALL,1,2,1,0,0.6667,1,0.8000,0.7416,378"
+        "dog,1,1,0,0,1,1,1,0.7891,368",
+        "person,1,1,0,0,1,1,1,0.6774,368",
+        "OVERALL,1,2,1,0,0.6667,1,0.8000,0.7333,368"
       ],
       "downloadLinks": [
-        "⬇ sentinel_2026-10-10T13-48-02.zip",
-        "⬇ sentinel_fieldtest_metrics_2026-10-10T13-48-03.csv",
-        "⬇ sentinel_fieldtest_trials_2026-10-10T13-48-03.csv"
+        "⬇ sentinel_2026-10-10T13-50-41.zip",
+        "⬇ sentinel_fieldtest_metrics_2026-10-10T13-50-41.csv",
+        "⬇ sentinel_fieldtest_trials_2026-10-10T13-50-41.csv"
       ]
     },
     "jsErrors": []
