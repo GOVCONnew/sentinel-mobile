@@ -63,15 +63,15 @@
     "checks": {
       "detector effdet0 person+dog": {
         "pass": true,
-        "info": "person 0.91, dog 0.55 | mediapipe-cpu @320 load 816ms, 126/83/84ms"
+        "info": "person 0.91, dog 0.55 | mediapipe-cpu @320 load 1025ms, 127/99/83ms"
       },
       "detector yolo11n person+dog": {
         "pass": true,
-        "info": "person 0.89, dog 0.31 | ort-wasm @416 load 1368ms, 165/164/209ms"
+        "info": "person 0.89, dog 0.31 | ort-wasm @416 load 1891ms, 150/160/148ms"
       },
       "detector coco-lite person+dog": {
         "pass": true,
-        "info": "dog 0.91, person 0.68, person 0.38 | webgl @320 load 5046ms, 341/363/389ms"
+        "info": "dog 0.91, person 0.68, person 0.38 | webgl @320 load 5024ms, 352/368/353ms"
       },
       "letterbox → source mapping consistent": {
         "pass": true,
@@ -95,45 +95,45 @@
       "effdet0": {
         "backend": "mediapipe-cpu",
         "inputSize": 320,
-        "loadMs": 816,
+        "loadMs": 1025,
         "ms": [
-          126,
-          83,
-          84
+          127,
+          99,
+          83
         ],
         "dets": "person 0.91, dog 0.55"
       },
       "yolo11n": {
         "backend": "ort-wasm",
         "inputSize": 416,
-        "loadMs": 1368,
+        "loadMs": 1891,
         "ms": [
-          165,
-          164,
-          209
+          150,
+          160,
+          148
         ],
         "dets": "person 0.89, dog 0.31"
       },
       "coco-lite": {
         "backend": "webgl",
         "inputSize": 320,
-        "loadMs": 5046,
+        "loadMs": 5024,
         "ms": [
-          341,
-          363,
-          389
+          352,
+          368,
+          353
         ],
         "dets": "dog 0.91, person 0.68, person 0.38"
       }
     },
     "yamnet": {
-      "loadMs": 1701,
+      "loadMs": 1938,
       "windows": 4,
       "ms": [
-        767,
-        91,
-        77,
-        70
+        465,
+        83,
+        70,
+        64
       ],
       "best": [
         "Animal 0.95",
@@ -161,12 +161,12 @@
             0,
             0
           ],
-          "gain": 0.9837267420394682
+          "gain": 0.9843191012143531
         },
         "topSound": {
-          "index": 69,
-          "label": "Dog",
-          "score": 0.8123363852500916
+          "index": 67,
+          "label": "Animal",
+          "score": 0.978689968585968
         },
         "audioOk": true,
         "audioMsg": "YAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)",
@@ -192,13 +192,13 @@
             "zone": null
           }
         ],
-        "p50": 103.8999999910593,
-        "p95": 164.3999999910593,
-        "detRate": 2.7781237127220555,
+        "p50": 97.29999999701977,
+        "p95": 164.70000000298023,
+        "detRate": 2.8837644063928676,
         "incident": {
-          "id": "incmv2oq2sr1",
-          "start": 1791654322347,
-          "end": 1791654328278,
+          "id": "incmv2oujq31",
+          "start": 1791654530907,
+          "end": 1791654536760,
           "status": "open",
           "tracks": {
             "1": {
@@ -206,26 +206,26 @@
               "label": "person",
               "group": "person",
               "peak": 0.8901394605636597,
-              "firstSeen": 1791654316421,
-              "confirmedAt": 1791654316780.1,
-              "timeToConfirmMs": 359,
-              "snapId": "snap_1_mv2opyun",
-              "lastSeen": 1791654322781
+              "firstSeen": 1791654525297.1,
+              "confirmedAt": 1791654525611.4,
+              "timeToConfirmMs": 314,
+              "snapId": "snap_1_mv2oufz6",
+              "lastSeen": 1791654530915
             },
             "2": {
               "id": 2,
               "label": "dog",
               "group": "animal",
               "peak": 0.7039188146591187,
-              "firstSeen": 1791654316421.3,
-              "confirmedAt": 1791654316780.4,
-              "timeToConfirmMs": 359,
-              "snapId": "snap_2_mv2opyv9",
-              "lastSeen": 1791654322989
+              "firstSeen": 1791654525297.4,
+              "confirmedAt": 1791654525611.7,
+              "timeToConfirmMs": 314,
+              "snapId": "snap_2_mv2oufzs",
+              "lastSeen": 1791654530917
             }
           },
           "audio": {
-            "Dog": 0.899
+            "Dog": 0.804
           },
           "audioTop": [
             "Animal",
@@ -233,7 +233,7 @@
             "Domestic animals, pets"
           ],
           "motion": {
-            "maxFgPct": 0.71875,
+            "maxFgPct": 0.6666666666666666,
             "movers": 1,
             "cues": 1
           },
@@ -243,35 +243,35 @@
             "CONFIRMED_TRACK:animal (3/6≥0.25)"
           ],
           "events": [
-            "evmv2opxem",
-            "evmv2opxek",
-            "evmv2opxel",
-            "evmv2opxen"
+            "evmv2ouelk",
+            "evmv2oueli",
+            "evmv2ouelj",
+            "evmv2ouell"
           ],
           "labels": [
             "Dog",
             "person",
             "dog"
           ],
-          "maxConf": 0.899,
+          "maxConf": 0.8901394605636597,
           "correlation": {
             "type": "co-occurring",
-            "dtSec": 1,
+            "dtSec": 0,
             "note": "Audio and visual evidence co-occurred in time — possibly related. SENTINEL does not determine that they come from the same source."
           },
           "snaps": [
-            "evmv2opxek",
-            "snap_1_mv2opyun",
-            "evmv2opxel",
-            "snap_2_mv2opyv9"
+            "evmv2oueli",
+            "snap_1_mv2oufz6",
+            "evmv2ouelj",
+            "snap_2_mv2oufzs"
           ],
-          "lastAudio": 1791654322347,
-          "lastVisual": 1791654322989
+          "lastAudio": 1791654530907,
+          "lastVisual": 1791654530917
         },
         "micMode": "AudioWorklet",
         "idb": true
       },
-      "hud": "NEWTON\nSENTINEL\n2.0\n● FOREGROUND ONLY\nDET/s\n2.8\np50 ms\n104\nMOTION\n0.0%\nTRACKS\n2\nperson×1 dog×1\n🔊 Dog 81%\n⚠ INCIDENT · Dog, person, dog · 3 reason(s) · audio+visual co-occurring",
+      "hud": "NEWTON\nSENTINEL\n2.0\n● FOREGROUND ONLY\nDET/s\n2.9\np50 ms\n98\nMOTION\n0.0%\nTRACKS\n2\nperson×1 dog×1\n🔊 Animal 98%\n⚠ INCIDENT · Dog, person, dog · 3 reason(s) · audio+visual co-occurring",
       "version": "2.0.0"
     },
     "labeling": {
@@ -280,9 +280,9 @@
           "kind": "tp",
           "cls": "person",
           "conf": 0.8901394605636597,
-          "ttcMs": 359.1000000089407,
+          "ttcMs": 314.29999999701977,
           "trackId": 1,
-          "t": 1791654331841
+          "t": 1791654539827
         },
         {
           "kind": "miss",
@@ -293,15 +293,15 @@
             0.08,
             0.74
           ],
-          "t": 1791654332424
+          "t": 1791654540361
         }
       ],
-      "table": "CLASS\tTP\tFP\tMISS\tPREC\tRECALL\tF1\tFP/h\tCONFIRM s\nperson\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.4\nOVERALL\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.4"
+      "table": "CLASS\tTP\tFP\tMISS\tPREC\tRECALL\tF1\tFP/h\tCONFIRM s\nperson\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.3\nOVERALL\t1\t0\t1\t100%\t50%\t67%\t0.0\t0.3"
     },
-    "trial": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t0\t0\t—\t—\t—\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t70%\t0.36\nperson\t1\t0\t0\t100%\t100%\t100%\t82%\t0.36\nOVERALL\t2\t0\t0\t100%\t100%\t100%\t76%\t0.36",
+    "trial": "CLASS\tTP\tFP\tFN\tPREC\tRECALL\tF1\tMEAN CONF\tTTFD s\nbackpack\t0\t0\t0\t—\t—\t—\t—\t—\ndog\t1\t0\t0\t100%\t100%\t100%\t70%\t0.30\nperson\t1\t0\t0\t100%\t100%\t100%\t84%\t0.30\nOVERALL\t2\t0\t0\t100%\t100%\t100%\t77%\t0.30",
     "pausedHud": "■ PAUSED — NOT MONITORING",
     "diag": {
-      "stats": "Version\t2.0.0\nModel\tEfficientDet-Lite0 (MediaPipe, Apache-2.0) · input 320px (adaptive)\nBackend\tmediapipe-cpu\nDetections/s\t3.92 (render )\nDetector latency p50 / p95\t102.7 ms / 159.6 ms\npreprocess / inference / postprocess (p50)\t9.0 ms / 90.1 ms / 0.0 ms\nMotion engine p50\t29.3 ms\nAudio (YAMNet) p50 / p95\t164.1 ms / 297.9 ms\nOverlay draw p50\t0.3 ms\nFrame policy\tlatest-frame only (queue depth 1)\nSkipped detector slots (busy)\t116\nCamera frames / processed\t237 / 106 (55% not analysed)\nMemory\t38 MB JS heap · tf tensors 131 / 15.3 MB\nThermal / latency drift\tok (baseline p50 107 ms)\nAdaptive changes\tnone\nMotion\tfg 0.00% · blobs 0 · movers 0 · shake 0,0 · gain 1.00 · learning\nZones\t0 ()\nAudio\tYAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)\nMonitoring\tactive (foreground)",
+      "stats": "Version\t2.0.0\nModel\tEfficientDet-Lite0 (MediaPipe, Apache-2.0) · input 320px (adaptive)\nBackend\tmediapipe-cpu\nDetections/s\t4.25 (render )\nDetector latency p50 / p95\t96.2 ms / 150.5 ms\npreprocess / inference / postprocess (p50)\t8.4 ms / 86.0 ms / 0.0 ms\nMotion engine p50\t25.8 ms\nAudio (YAMNet) p50 / p95\t153.5 ms / 281.3 ms\nOverlay draw p50\t0.3 ms\nFrame policy\tlatest-frame only (queue depth 1)\nSkipped detector slots (busy)\t124\nCamera frames / processed\t248 / 116 (53% not analysed)\nMemory\t43 MB JS heap · tf tensors 131 / 15.3 MB\nThermal / latency drift\tok (baseline p50 102 ms)\nAdaptive changes\tnone\nMotion\tfg 0.00% · blobs 0 · movers 0 · shake 0,0 · gain 1.00 · learning\nZones\t0 ()\nAudio\tYAMNet ready (AudioWorklet, 44100 Hz → 16 kHz)\nMonitoring\tactive (foreground)",
       "raw": [
         "CLASS\tRAW\tCLASS THR\tTRACK\tTRACK CONF\tSTATUS / REASON",
         "person\t77%\t45%\t1\t89% max\tCONFIRMED",
@@ -309,8 +309,8 @@
       ],
       "tracks": [
         "ID\tLABEL\tSTATE\tHITS (N/M)\tAGE s\tPEAK\tZONE",
-        "1\tperson\tconfirmed\t5/3 of 5\t2.7\t89%\tok",
-        "2\tdog\tconfirmed\t6/3 of 6\t2.7\t70%\tok"
+        "1\tperson\tconfirmed\t5/3 of 5\t2.6\t89%\tok",
+        "2\tdog\tconfirmed\t6/3 of 6\t2.6\t70%\tok"
       ]
     },
     "export": {
@@ -325,17 +325,17 @@
       "withGeo": 10,
       "withSnap": 7,
       "gap": [
-        "NOT monitoring for 3 s (app hidden / screen locked) from 2026-10-10T17:45:39.323Z"
+        "NOT monitoring for 3 s (app hidden / screen locked) from 2026-10-10T17:49:07.911Z"
       ],
       "sample": [
-        "2026-10-10T17:45:16.381Z manual monitoring started null",
-        "2026-10-10T17:45:17.065Z object person 0.8901",
-        "2026-10-10T17:45:17.206Z object dog 0.7039",
-        "2026-10-10T17:45:21.909Z sound Dog 0.899",
-        "2026-10-10T17:45:26.061Z motion coherent motion 0.0719",
-        "2026-10-10T17:45:31.841Z manual label tp: person 0.8901",
-        "2026-10-10T17:45:32.424Z manual label miss: person null",
-        "2026-10-10T17:45:32.654Z sound Dog 0.721"
+        "2026-10-10T17:48:45.258Z manual monitoring started null",
+        "2026-10-10T17:48:45.889Z object person 0.8901",
+        "2026-10-10T17:48:46.025Z object dog 0.7039",
+        "2026-10-10T17:48:50.552Z sound Dog 0.804",
+        "2026-10-10T17:48:55.020Z motion coherent motion 0.0667",
+        "2026-10-10T17:48:59.827Z manual label tp: person 0.8901",
+        "2026-10-10T17:49:00.361Z manual label miss: person null",
+        "2026-10-10T17:49:00.833Z sound Dog 0.788"
       ],
       "incidents": [
         {
@@ -350,11 +350,11 @@
             "CONFIRMED_TRACK:animal (3/6≥0.25)"
           ],
           "tracks": [
-            "person#1 ttc 359",
-            "dog#2 ttc 359"
+            "person#1 ttc 314",
+            "dog#2 ttc 314"
           ],
           "audio": {
-            "Dog": 0.899
+            "Dog": 0.804
           },
           "correlation": "co-occurring",
           "snaps": 8
@@ -373,10 +373,10 @@
             "kind": "tp",
             "cls": "person",
             "conf": 0.89,
-            "ttcSec": 0.4
+            "ttcSec": 0.3
           },
           {
-            "tSec": 3,
+            "tSec": 2,
             "kind": "miss",
             "cls": "person",
             "conf": null,
@@ -392,7 +392,7 @@
           "f1": 0.6666666666666666,
           "fpPerHour": 0,
           "meanConf": 0.8901394605636597,
-          "meanTimeToConfirmMs": 359.1000000089407
+          "meanTimeToConfirmMs": 314.29999999701977
         },
         "noIsoTimestamps": true,
         "noImages": true,
@@ -400,8 +400,8 @@
       },
       "anonCsv": [
         "cls,tp,fp,fn,precision,recall,f1,fpPerHour,meanConf,meanTimeToConfirmMs",
-        "person,1,0,1,1,0.5000,0.6667,0,0.8901,359.1000",
-        "OVERALL,1,0,1,1,0.5000,0.6667,0,0.8901,359.1000"
+        "person,1,0,1,1,0.5000,0.6667,0,0.8901,314.3000",
+        "OVERALL,1,0,1,1,0.5000,0.6667,0,0.8901,314.3000"
       ]
     },
     "jsErrors": []
