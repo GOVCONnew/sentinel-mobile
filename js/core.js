@@ -152,7 +152,34 @@
       ['trial', 'start', 'end', 'duration_s', 'present', 'absent', 'detected', 'marks']);
   }
 
-  var api = { GROUPS: GROUPS, DEFAULT_CLASSES: DEFAULT_CLASSES, groupOf: groupOf, toGray: toGray, diffThreshold: diffThreshold, inRoi: inRoi,
+
+  // ---------- v2: class-aware NMS ----------
+  /** Greedy NMS per class. Returns {kept, suppressed:[{det, by, iou}]} sorted by score desc. */
+  function nmsClassAware(dets, iouT, maxDets) {
+    var s = dets.slice().sort(function (a, b) { return b.score - a.score; }), kept = [], sup = [];
+    for (var i = 0; i < s.length; i++) {
+      var d = s[i], hit = null;
+      for (var j = 0; j < kept.length; j++) { if (kept[j].cls !== d.cls) continue; var v = iou(kept[j], d); if (v > iouT) { hit = { det: d, by: kept[j], iou: v }; break; } }
+      if (hit) sup.push(hit); else if (kept.length < (maxDets || 100)) kept.push(d);
+    }
+    return { kept: kept, suppressed: sup };
+  }
+  // ---------- v2: low-light enhancement (auto gamma + percentile contrast stretch), in-place on RGBA ----------
+  /** opts: {mode:'auto'|'always', darkMean:0.38}. Applies only when mean luminance < darkMean (auto) or always. */
+  function enhanceRGBA(px, opts) {
+    opts = opts || {}; var n = px.length / 4, hist = new Uint32Array(256), sum = 0;
+    for (var i = 0; i < px.length; i += 16) { var y = (px[i] * 77 + px[i + 1] * 150 + px[i + 2] * 29) >> 8; hist[y]++; sum += y; }
+    var cnt = Math.ceil(n / 4), mean = sum / cnt / 255;
+    if (opts.mode !== 'always' && mean >= (opts.darkMean || 0.38)) return { applied: false, mean: mean };
+    var lo = 0, hi = 255, acc = 0; for (lo = 0; lo < 255 && (acc += hist[lo]) < cnt * 0.01; lo++); acc = 0; for (hi = 255; hi > 0 && (acc += hist[hi]) < cnt * 0.01; hi--);
+    if (hi - lo < 16) { lo = Math.max(0, lo - 8); hi = Math.min(255, hi + 8); }
+    var m2 = Math.min(0.95, Math.max(0.02, (mean * 255 - lo) / (hi - lo))), g = Math.max(0.4, Math.min(1, Math.log(0.45) / Math.log(m2)));
+    var lut = new Uint8ClampedArray(256); for (var v = 0; v < 256; v++) lut[v] = 255 * Math.pow(Math.min(1, Math.max(0, (v - lo) / (hi - lo))), g);
+    for (var k = 0; k < px.length; k += 4) { px[k] = lut[px[k]]; px[k + 1] = lut[px[k + 1]]; px[k + 2] = lut[px[k + 2]]; }
+    return { applied: true, mean: mean, gamma: g, lo: lo, hi: hi };
+  }
+
+  var api = { nmsClassAware: nmsClassAware, enhanceRGBA: enhanceRGBA, GROUPS: GROUPS, DEFAULT_CLASSES: DEFAULT_CLASSES, groupOf: groupOf, toGray: toGray, diffThreshold: diffThreshold, inRoi: inRoi,
     motion: motion, sceneChange: sceneChange, Debouncer: Debouncer, iou: iou, Tracker: Tracker, fieldMetrics: fieldMetrics,
     csvCell: csvCell, toCSV: toCSV, eventsCSV: eventsCSV, metricsCSV: metricsCSV, trialsCSV: trialsCSV };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else global.SCore = api;

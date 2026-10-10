@@ -1,0 +1,51 @@
+<!doctype html><html><head><meta charset="utf-8"><title>SENTINEL detector benchmark</title></head><body style="background:#000;color:#9ACD32;font:12px monospace">
+<pre id="log">running…</pre>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+<script>window.SENTINEL_BASE = '../';</script>
+<script src="../js/core.js"></script><script src="../js/detectors.js"></script>
+<script>
+// Runs each detector config over eval images + negative frames, records raw detections (floor 0.15) and per-stage timings.
+// Query: ?configs=a,b  (see CONFIGS)
+(async function () {
+  var L = document.getElementById('log'), log = function (s) { L.textContent += '\n' + s; console.log(s); };
+  var gt = await (await fetch('eval/ground_truth.json')).json(), neg = await (await fetch('negframes/list.json')).json();
+  var CONFIGS = {
+    'v1-coco-lite': { v1: 'lite_mobilenet_v2' }, 'v1-coco-mnv2': { v1: 'mobilenet_v2' },
+    'coco-lite@320': { id: 'coco-lite', size: 320 }, 'coco-mnv2@320': { id: 'coco-mnv2', size: 320 },
+    'effdet0@320': { id: 'effdet0', size: 320, gpu: 1 }, 'effdet2@448': { id: 'effdet2', size: 448, gpu: 1 },
+    'yolov8n@320': { id: 'yolov8n', size: 320 }, 'yolov8n@416': { id: 'yolov8n', size: 416 }, 'yolov8n@640': { id: 'yolov8n', size: 640 },
+    'yolo11n@320': { id: 'yolo11n', size: 320 }, 'yolo11n@416': { id: 'yolo11n', size: 416 }, 'yolo11n@640': { id: 'yolo11n', size: 640 },
+    'yolo11n@416+enh': { id: 'yolo11n', size: 416, enhance: { mode: 'auto' } }, 'effdet2@448+enh': { id: 'effdet2', size: 448, enhance: { mode: 'auto' } }, 'effdet0@320-cpu': { id: 'effdet0', size: 320, forceWasm: 1 }, 'effdet0@320-cpu+enh': { id: 'effdet0', size: 320, forceWasm: 1, enhance: { mode: 'auto' } }, 'effdet2@448-cpu': { id: 'effdet2', size: 448, forceWasm: 1 }
+  };
+  var want = (new URLSearchParams(location.search).get('configs') || Object.keys(CONFIGS).join(',')).split(',');
+  var out = window.__bench = { done: false, results: {}, errors: [] };
+  async function img(src) { var i = new Image(); i.src = src; await i.decode(); return i; }
+  var imgs = []; for (var g of gt) imgs.push({ set: 'eval', file: g.file, el: await img('eval/img/' + g.file) });
+  for (var f of neg) imgs.push({ set: 'neg', file: f, el: await img('negframes/' + f) });
+  for (var name of want) {
+    var C = CONFIGS[name], rec = { name: name, items: [], t: [] };
+    try {
+      var t0 = performance.now(), v1;
+      if (C.v1) { await tf.setBackend('webgl'); v1 = await cocoSsd.load({ base: C.v1 }); rec.backend = tf.getBackend(); rec.label = 'v1 COCO-SSD ' + C.v1 + ' (stretched 320 long side, minScore 0.5, lib NMS iou=0.5)'; }
+      else { var M = await SDet2.load(C.id, { inputSize: C.size, forceWasm: C.forceWasm, gpu: C.gpu }); rec.backend = M.backend; rec.label = M.label; }
+      rec.loadMs = Math.round(performance.now() - t0);
+      for (var it of imgs) {
+        var W = it.el.naturalWidth, H = it.el.naturalHeight, r;
+        if (C.v1) { // exact v1 path
+          var k = Math.min(1, 320 / Math.max(W, H)), cv = document.createElement('canvas'); cv.width = Math.round(W * k); cv.height = Math.round(H * k); var ta = performance.now(); cv.getContext('2d').drawImage(it.el, 0, 0, cv.width, cv.height); var tb = performance.now();
+          var raw = await v1.detect(cv, 20, 0.5), tc = performance.now();
+          r = { dets: raw.map(function (d) { return { cls: d['class'], score: d.score, x: d.bbox[0] / k, y: d.bbox[1] / k, w: d.bbox[2] / k, h: d.bbox[3] / k }; }), t: { pre: tb - ta, infer: tc - tb, post: 0 } };
+        } else r = await SDet2.detect(it.el, W, H, { floor: 0.15, iou: 0.5, inputSize: C.size, enhance: C.enhance });
+        rec.items.push({ set: it.set, file: it.file, dets: r.dets.map(function (d) { return [d.cls, +d.score.toFixed(3), Math.round(d.x), Math.round(d.y), Math.round(d.w), Math.round(d.h)]; }), enh: r.enhance && r.enhance.applied ? 1 : 0 });
+        rec.t.push([+r.t.pre.toFixed(1), +r.t.infer.toFixed(1), +r.t.post.toFixed(1)]);
+      }
+      if (v1) v1.dispose();
+      var inf = rec.t.map(function (x) { return x[0] + x[1] + x[2]; }).sort(function (a, b) { return a - b; });
+      log(name + ' [' + rec.backend + '] load ' + rec.loadMs + 'ms p50 ' + inf[inf.length >> 1].toFixed(0) + 'ms');
+    } catch (e) { rec.error = String(e && e.stack || e); log(name + ' ERROR ' + rec.error); }
+    out.results[name] = rec;
+  }
+  out.done = true; log('done');
+})();
+</script></body></html>

@@ -1,0 +1,311 @@
+{
+ "neg_wind_1": {
+  "seconds": 19.975,
+  "negative": true,
+  "top": [
+   "Vehicle 0.95",
+   "Rail transport 0.88",
+   "Subway, metro, underground 0.88",
+   "Thunderstorm 0.86"
+  ],
+  "v1": {
+   "events": [
+    "Vehicle@1.0",
+    "Vehicle@11.0"
+   ],
+   "fp": 2,
+   "fpPerMin": 6.007509386733417,
+   "hit": null
+  },
+  "v2": {
+   "events": [],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": null
+  }
+ },
+ "neg_rain_1": {
+  "seconds": 19.975,
+  "negative": true,
+  "top": [
+   "Boat, Water vehicle 0.82",
+   "Rowboat, canoe, kayak 0.78",
+   "Vehicle 0.72",
+   "Water 0.56"
+  ],
+  "v1": {
+   "events": [
+    "Vehicle@0.5",
+    "Vehicle@10.5"
+   ],
+   "fp": 2,
+   "fpPerMin": 6.007509386733417,
+   "hit": null
+  },
+  "v2": {
+   "events": [],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": null
+  }
+ },
+ "neg_rain_2": {
+  "seconds": 19.975,
+  "negative": true,
+  "top": [
+   "Pink noise 0.77",
+   "Noise 0.77",
+   "Rustle 0.62",
+   "White noise 0.61"
+  ],
+  "v1": {
+   "events": [],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": null
+  },
+  "v2": {
+   "events": [],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": null
+  }
+ },
+ "neg_rainwind_3": {
+  "seconds": 19.975,
+  "negative": true,
+  "top": [
+   "Water 0.94",
+   "Ocean 0.93",
+   "Stream 0.93",
+   "Waves, surf 0.89"
+  ],
+  "v1": {
+   "events": [
+    "Vehicle@0.5",
+    "Vehicle@14.5"
+   ],
+   "fp": 2,
+   "fpPerMin": 6.007509386733417,
+   "hit": null
+  },
+  "v2": {
+   "events": [],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": null
+  }
+ },
+ "neg_rain_thunder_4": {
+  "seconds": 18.475,
+  "negative": true,
+  "top": [
+   "Thunderstorm 1.00",
+   "Thunder 0.99",
+   "Animal 0.85",
+   "Rain 0.80"
+  ],
+  "v1": {
+   "events": [
+    "Vehicle@3.5",
+    "Dog@8.5"
+   ],
+   "fp": 2,
+   "fpPerMin": 6.495263870094722,
+   "hit": null
+  },
+  "v2": {
+   "events": [
+    "Dog@14.0"
+   ],
+   "fp": 1,
+   "fpPerMin": 3.247631935047361,
+   "hit": null
+  }
+ },
+ "pos_bird_1": {
+  "seconds": 19.975,
+  "negative": false,
+  "top": [
+   "Bird 0.98",
+   "Wild animals 0.97",
+   "Bird vocalization, bird call, bird song 0.96",
+   "Animal 0.95"
+  ],
+  "v1": {
+   "events": [
+    "Bird@5.0",
+    "Bird@15.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  },
+  "v2": {
+   "events": [
+    "Bird@6.0",
+    "Bird@16.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  }
+ },
+ "pos_chainsaw_1": {
+  "seconds": 9.475,
+  "negative": false,
+  "top": [
+   "Insect 0.82",
+   "Speech 0.64",
+   "Buzz 0.63",
+   "Bee, wasp, etc. 0.57"
+  ],
+  "v1": {
+   "events": [
+    "Speech@4.0"
+   ],
+   "fp": 1,
+   "fpPerMin": 6.33245382585752,
+   "hit": false
+  },
+  "v2": {
+   "events": [],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": false
+  }
+ },
+ "pos_dog_1": {
+  "seconds": 2.475,
+  "negative": false,
+  "top": [
+   "Animal 0.95",
+   "Domestic animals, pets 0.91",
+   "Dog 0.91",
+   "Bow-wow 0.66"
+  ],
+  "v1": {
+   "events": [
+    "Dog@0.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  },
+  "v2": {
+   "events": [
+    "Dog@0.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  }
+ },
+ "pos_footsteps_birds_1": {
+  "seconds": 13.475,
+  "negative": false,
+  "top": [
+   "Silence 1.00",
+   "Animal 0.99",
+   "Crow 0.96",
+   "Caw 0.91"
+  ],
+  "v1": {
+   "events": [
+    "Bird@5.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  },
+  "v2": {
+   "events": [
+    "Bird@3.5"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  }
+ },
+ "pos_cars_birds_1": {
+  "seconds": 19.975,
+  "negative": false,
+  "top": [
+   "Wild animals 0.96",
+   "Bird 0.96",
+   "Animal 0.96",
+   "Squawk 0.81"
+  ],
+  "v1": {
+   "events": [
+    "Bird@0.0",
+    "Bird@10.5"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  },
+  "v2": {
+   "events": [
+    "Bird@0.5",
+    "Bird@13.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  }
+ },
+ "pos_cars_2": {
+  "seconds": 19.975,
+  "negative": false,
+  "top": [
+   "Vehicle 0.95",
+   "Rail transport 0.74",
+   "Train 0.70",
+   "Traffic noise, roadway noise 0.61"
+  ],
+  "v1": {
+   "events": [
+    "Vehicle@2.0",
+    "Vehicle@12.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  },
+  "v2": {
+   "events": [
+    "Vehicle@5.0"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  }
+ },
+ "pos_gunshot_1": {
+  "seconds": 5.475,
+  "negative": false,
+  "top": [
+   "Cap gun 0.90",
+   "Gunshot, gunfire 0.86",
+   "Explosion 0.84",
+   "Knock 0.74"
+  ],
+  "v1": {
+   "events": [
+    "Gunshot@0.5"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  },
+  "v2": {
+   "events": [
+    "Gunshot@0.5"
+   ],
+   "fp": 0,
+   "fpPerMin": 0,
+   "hit": true
+  }
+ }
+}

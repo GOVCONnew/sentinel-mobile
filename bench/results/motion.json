@@ -1,0 +1,280 @@
+{
+ "synth_sway": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.12
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 3.4
+  }
+ },
+ "synth_sway_strong": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [
+    0.1,
+    10.1
+   ],
+   "falseAlerts": 2,
+   "falsePerMin": 8.571428571428571,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.05
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 3.7
+  }
+ },
+ "synth_sunflicker": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [
+    0.6,
+    10.6
+   ],
+   "falseAlerts": 2,
+   "falsePerMin": 8.571428571428571,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.78
+  }
+ },
+ "synth_light": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.46
+  }
+ },
+ "synth_shadow": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.46
+  }
+ },
+ "synth_shake": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [
+    0.5,
+    10.9
+   ],
+   "falseAlerts": 2,
+   "falsePerMin": 8.571428571428571,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.47
+  }
+ },
+ "synth_sway_light_shake": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 3.99
+  }
+ },
+ "pos_intruder_sway": {
+  "positive": true,
+  "seconds": 14,
+  "v1": {
+   "alerts": [
+    0.1,
+    10.1
+   ],
+   "falseAlerts": 1,
+   "falsePerMin": 4.285714285714286,
+   "detected": true,
+   "delay": 6.1,
+   "msPerFrame": 0.06
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": false,
+   "delay": null,
+   "msPerFrame": 2.75
+  }
+ },
+ "pos_intruder_shake_light": {
+  "positive": true,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": false,
+   "delay": null,
+   "msPerFrame": 0.03
+  },
+  "v2": {
+   "alerts": [
+    5
+   ],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": true,
+   "delay": 1,
+   "msPerFrame": 2.71
+  }
+ },
+ "foliage_wind_1": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.03
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.46
+  }
+ },
+ "foliage_wind_2": {
+  "positive": false,
+  "seconds": 14,
+  "v1": {
+   "alerts": [
+    1.2
+   ],
+   "falseAlerts": 1,
+   "falsePerMin": 4.285714285714286,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.47
+  }
+ },
+ "foliage_wind_3": {
+  "positive": false,
+  "seconds": 7.2,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": null,
+   "delay": null,
+   "msPerFrame": 2.36
+  }
+ },
+ "pos_intruder_realfoliage": {
+  "positive": true,
+  "seconds": 14,
+  "v1": {
+   "alerts": [],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": false,
+   "delay": null,
+   "msPerFrame": 0.04
+  },
+  "v2": {
+   "alerts": [
+    4.3
+   ],
+   "falseAlerts": 0,
+   "falsePerMin": 0,
+   "detected": true,
+   "delay": 0.3,
+   "msPerFrame": 2.41
+  }
+ }
+}

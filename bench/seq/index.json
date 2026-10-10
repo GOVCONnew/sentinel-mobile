@@ -1,0 +1,102 @@
+{
+ "synth_sway": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "synth_sway_strong": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "synth_sunflicker": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "synth_light": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "synth_shadow": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "synth_shake": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "synth_sway_light_shake": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "pos_intruder_sway": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": [
+   4.0,
+   11.0
+  ]
+ },
+ "pos_intruder_shake_light": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": [
+   4.0,
+   11.0
+  ]
+ },
+ "foliage_wind_1": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "foliage_wind_2": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": null
+ },
+ "foliage_wind_3": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 72,
+  "intruder": null
+ },
+ "pos_intruder_realfoliage": {
+  "w": 160,
+  "h": 120,
+  "fps": 10,
+  "n": 140,
+  "intruder": [
+   4.0,
+   11.0
+  ]
+ }
+}

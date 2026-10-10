@@ -1,0 +1,1810 @@
+{
+ "coco-lite@320": {
+  "fixed": {
+   "name": "coco-lite@320",
+   "label": "COCO-SSD lite_mobilenet_v2 (TF.js, Apache-2.0)",
+   "backend": "webgl",
+   "loadMs": 5288,
+   "person": {
+    "tp": 10,
+    "fp": 1,
+    "fn": 7,
+    "P": 0.9090909090909091,
+    "R": 0.5882352941176471,
+    "F1": 0.7142857142857143
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.65,
+    "F1": 0.787878787878788
+   },
+   "vehicle": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 4,
+    "P": 1,
+    "R": 0.75,
+    "F1": 0.8571428571428571
+   },
+   "all": {
+    "tp": 35,
+    "fp": 1,
+    "fn": 18,
+    "P": 0.9722222222222222,
+    "R": 0.660377358490566,
+    "F1": 0.7865168539325842
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.35714285714285715,
+   "negFrames": 74,
+   "negFPFrameRate": 0,
+   "rawFPperMin": 0,
+   "confirmedFPperMin": 0,
+   "p50": 371.4,
+   "p95": 419.8,
+   "pre50": 0.1,
+   "inf50": 14.3,
+   "post50": 356.3
+  },
+  "tuned": {
+   "name": "coco-lite@320",
+   "label": "COCO-SSD lite_mobilenet_v2 (TF.js, Apache-2.0)",
+   "backend": "webgl",
+   "loadMs": 5288,
+   "person": {
+    "tp": 14,
+    "fp": 2,
+    "fn": 3,
+    "P": 0.875,
+    "R": 0.8235294117647058,
+    "F1": 0.8484848484848485
+   },
+   "animal": {
+    "tp": 18,
+    "fp": 1,
+    "fn": 2,
+    "P": 0.9473684210526315,
+    "R": 0.9,
+    "F1": 0.9230769230769231
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 3,
+    "P": 1,
+    "R": 0.8125,
+    "F1": 0.896551724137931
+   },
+   "all": {
+    "tp": 45,
+    "fp": 3,
+    "fn": 8,
+    "P": 0.9375,
+    "R": 0.8490566037735849,
+    "F1": 0.8910891089108911
+   },
+   "negFPByGroup": {
+    "person": 0.013513513513513514,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.6428571428571429,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 371.4,
+   "p95": 419.8,
+   "pre50": 0.1,
+   "inf50": 14.3,
+   "post50": 356.3
+  },
+  "tunedThr": {
+   "person": 0.3,
+   "animal": 0.2,
+   "vehicle": 0.3
+  }
+ },
+ "coco-mnv2@320": {
+  "fixed": {
+   "name": "coco-mnv2@320",
+   "label": "COCO-SSD mobilenet_v2 (TF.js, Apache-2.0)",
+   "backend": "webgl",
+   "loadMs": 6639,
+   "person": {
+    "tp": 13,
+    "fp": 1,
+    "fn": 4,
+    "P": 0.9285714285714286,
+    "R": 0.7647058823529411,
+    "F1": 0.8387096774193549
+   },
+   "animal": {
+    "tp": 11,
+    "fp": 0,
+    "fn": 9,
+    "P": 1,
+    "R": 0.55,
+    "F1": 0.7096774193548387
+   },
+   "vehicle": {
+    "tp": 11,
+    "fp": 0,
+    "fn": 5,
+    "P": 1,
+    "R": 0.6875,
+    "F1": 0.8148148148148148
+   },
+   "all": {
+    "tp": 35,
+    "fp": 1,
+    "fn": 18,
+    "P": 0.9722222222222222,
+    "R": 0.660377358490566,
+    "F1": 0.7865168539325842
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.42857142857142855,
+   "negFrames": 74,
+   "negFPFrameRate": 0,
+   "rawFPperMin": 0,
+   "confirmedFPperMin": 0,
+   "p50": 951.5,
+   "p95": 1064,
+   "pre50": 0.1,
+   "inf50": 14.3,
+   "post50": 937.1
+  },
+  "tuned": {
+   "name": "coco-mnv2@320",
+   "label": "COCO-SSD mobilenet_v2 (TF.js, Apache-2.0)",
+   "backend": "webgl",
+   "loadMs": 6639,
+   "person": {
+    "tp": 15,
+    "fp": 2,
+    "fn": 2,
+    "P": 0.8823529411764706,
+    "R": 0.8823529411764706,
+    "F1": 0.8823529411764706
+   },
+   "animal": {
+    "tp": 16,
+    "fp": 2,
+    "fn": 4,
+    "P": 0.8888888888888888,
+    "R": 0.8,
+    "F1": 0.8421052631578948
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 1,
+    "fn": 3,
+    "P": 0.9285714285714286,
+    "R": 0.8125,
+    "F1": 0.8666666666666666
+   },
+   "all": {
+    "tp": 44,
+    "fp": 5,
+    "fn": 9,
+    "P": 0.8979591836734694,
+    "R": 0.8301886792452831,
+    "F1": 0.8627450980392157
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.7142857142857143,
+   "negFrames": 74,
+   "negFPFrameRate": 0,
+   "rawFPperMin": 0,
+   "confirmedFPperMin": 0,
+   "p50": 951.5,
+   "p95": 1064,
+   "pre50": 0.1,
+   "inf50": 14.3,
+   "post50": 937.1
+  },
+  "tunedThr": {
+   "person": 0.35,
+   "animal": 0.25,
+   "vehicle": 0.25
+  }
+ },
+ "effdet0@320": {
+  "fixed": {
+   "name": "effdet0@320",
+   "label": "EfficientDet-Lite0 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-gpu",
+   "loadMs": 3259,
+   "person": {
+    "tp": 16,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9411764705882353,
+    "F1": 0.9696969696969697
+   },
+   "animal": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 6,
+    "P": 1,
+    "R": 0.7,
+    "F1": 0.8235294117647058
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 44,
+    "fp": 0,
+    "fn": 9,
+    "P": 1,
+    "R": 0.8301886792452831,
+    "F1": 0.9072164948453608
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 675.2,
+   "p95": 744.6,
+   "pre50": 0.1,
+   "inf50": 675.1,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "effdet0@320",
+   "label": "EfficientDet-Lite0 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-gpu",
+   "loadMs": 3259,
+   "person": {
+    "tp": 16,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9411764705882353,
+    "F1": 0.9696969696969697
+   },
+   "animal": {
+    "tp": 20,
+    "fp": 3,
+    "fn": 0,
+    "P": 0.8695652173913043,
+    "R": 1,
+    "F1": 0.9302325581395349
+   },
+   "vehicle": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9375,
+    "F1": 0.967741935483871
+   },
+   "all": {
+    "tp": 51,
+    "fp": 3,
+    "fn": 2,
+    "P": 0.9444444444444444,
+    "R": 0.9622641509433962,
+    "F1": 0.9532710280373832
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.9285714285714286,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 0,
+   "p50": 675.2,
+   "p95": 744.6,
+   "pre50": 0.1,
+   "inf50": 675.1,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.45,
+   "animal": 0.25,
+   "vehicle": 0.45
+  }
+ },
+ "effdet0@320-cpu": {
+  "fixed": {
+   "name": "effdet0@320-cpu",
+   "label": "EfficientDet-Lite0 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-cpu",
+   "loadMs": 768,
+   "person": {
+    "tp": 16,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9411764705882353,
+    "F1": 0.9696969696969697
+   },
+   "animal": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 6,
+    "P": 1,
+    "R": 0.7,
+    "F1": 0.8235294117647058
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 44,
+    "fp": 0,
+    "fn": 9,
+    "P": 1,
+    "R": 0.8301886792452831,
+    "F1": 0.9072164948453608
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 97,
+   "p95": 130.79999999999998,
+   "pre50": 0.1,
+   "inf50": 96.9,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "effdet0@320-cpu",
+   "label": "EfficientDet-Lite0 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-cpu",
+   "loadMs": 768,
+   "person": {
+    "tp": 16,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9411764705882353,
+    "F1": 0.9696969696969697
+   },
+   "animal": {
+    "tp": 20,
+    "fp": 3,
+    "fn": 0,
+    "P": 0.8695652173913043,
+    "R": 1,
+    "F1": 0.9302325581395349
+   },
+   "vehicle": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9375,
+    "F1": 0.967741935483871
+   },
+   "all": {
+    "tp": 51,
+    "fp": 3,
+    "fn": 2,
+    "P": 0.9444444444444444,
+    "R": 0.9622641509433962,
+    "F1": 0.9532710280373832
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.9285714285714286,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 0,
+   "p50": 97,
+   "p95": 130.79999999999998,
+   "pre50": 0.1,
+   "inf50": 96.9,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.45,
+   "animal": 0.25,
+   "vehicle": 0.45
+  }
+ },
+ "effdet0@320-cpu+enh": {
+  "fixed": {
+   "name": "effdet0@320-cpu+enh",
+   "label": "EfficientDet-Lite0 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-cpu",
+   "loadMs": 781,
+   "person": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.8823529411764706,
+    "F1": 0.9375
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.65,
+    "F1": 0.787878787878788
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 42,
+    "fp": 0,
+    "fn": 11,
+    "P": 1,
+    "R": 0.7924528301886793,
+    "F1": 0.8842105263157896
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.6428571428571429,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 112.6,
+   "p95": 129,
+   "pre50": 4.4,
+   "inf50": 108,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "effdet0@320-cpu+enh",
+   "label": "EfficientDet-Lite0 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-cpu",
+   "loadMs": 781,
+   "person": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.8823529411764706,
+    "F1": 0.9375
+   },
+   "animal": {
+    "tp": 20,
+    "fp": 3,
+    "fn": 0,
+    "P": 0.8695652173913043,
+    "R": 1,
+    "F1": 0.9302325581395349
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 49,
+    "fp": 3,
+    "fn": 4,
+    "P": 0.9423076923076923,
+    "R": 0.9245283018867925,
+    "F1": 0.9333333333333333
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 112.6,
+   "p95": 129,
+   "pre50": 4.4,
+   "inf50": 108,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.45,
+   "animal": 0.25,
+   "vehicle": 0.5
+  }
+ },
+ "effdet2@448": {
+  "fixed": {
+   "name": "effdet2@448",
+   "label": "EfficientDet-Lite2 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-gpu",
+   "loadMs": 5416,
+   "person": {
+    "tp": 17,
+    "fp": 2,
+    "fn": 0,
+    "P": 0.8947368421052632,
+    "R": 1,
+    "F1": 0.9444444444444444
+   },
+   "animal": {
+    "tp": 16,
+    "fp": 2,
+    "fn": 4,
+    "P": 0.8888888888888888,
+    "R": 0.8,
+    "F1": 0.8421052631578948
+   },
+   "vehicle": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9375,
+    "F1": 0.967741935483871
+   },
+   "all": {
+    "tp": 48,
+    "fp": 4,
+    "fn": 5,
+    "P": 0.9230769230769231,
+    "R": 0.9056603773584906,
+    "F1": 0.9142857142857143
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.28378378378378377
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.28378378378378377,
+   "rawFPperMin": 34.05405405405405,
+   "confirmedFPperMin": 3.4285714285714284,
+   "p50": 1734.1999999999998,
+   "p95": 1905.2,
+   "pre50": 0.1,
+   "inf50": 1734.1,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "effdet2@448",
+   "label": "EfficientDet-Lite2 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-gpu",
+   "loadMs": 5416,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 20,
+    "fp": 5,
+    "fn": 0,
+    "P": 0.8,
+    "R": 1,
+    "F1": 0.888888888888889
+   },
+   "vehicle": {
+    "tp": 11,
+    "fp": 0,
+    "fn": 5,
+    "P": 1,
+    "R": 0.6875,
+    "F1": 0.8148148148148148
+   },
+   "all": {
+    "tp": 48,
+    "fp": 5,
+    "fn": 5,
+    "P": 0.9056603773584906,
+    "R": 0.9056603773584906,
+    "F1": 0.9056603773584906
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.9285714285714286,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 1734.1999999999998,
+   "p95": 1905.2,
+   "pre50": 0.1,
+   "inf50": 1734.1,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.6,
+   "animal": 0.25,
+   "vehicle": 0.7
+  }
+ },
+ "effdet2@448-cpu": {
+  "fixed": {
+   "name": "effdet2@448-cpu",
+   "label": "EfficientDet-Lite2 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-cpu",
+   "loadMs": 1024,
+   "person": {
+    "tp": 17,
+    "fp": 2,
+    "fn": 0,
+    "P": 0.8947368421052632,
+    "R": 1,
+    "F1": 0.9444444444444444
+   },
+   "animal": {
+    "tp": 16,
+    "fp": 1,
+    "fn": 4,
+    "P": 0.9411764705882353,
+    "R": 0.8,
+    "F1": 0.8648648648648648
+   },
+   "vehicle": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 1,
+    "P": 1,
+    "R": 0.9375,
+    "F1": 0.967741935483871
+   },
+   "all": {
+    "tp": 48,
+    "fp": 3,
+    "fn": 5,
+    "P": 0.9411764705882353,
+    "R": 0.9056603773584906,
+    "F1": 0.923076923076923
+   },
+   "negFPByGroup": {
+    "person": 0.013513513513513514,
+    "animal": 0,
+    "vehicle": 0.2702702702702703
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.2702702702702703,
+   "rawFPperMin": 32.43243243243243,
+   "confirmedFPperMin": 3.4285714285714284,
+   "p50": 264.3,
+   "p95": 318,
+   "pre50": 0.1,
+   "inf50": 264.3,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "effdet2@448-cpu",
+   "label": "EfficientDet-Lite2 (MediaPipe, Apache-2.0)",
+   "backend": "mediapipe-cpu",
+   "loadMs": 1024,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 20,
+    "fp": 4,
+    "fn": 0,
+    "P": 0.8333333333333334,
+    "R": 1,
+    "F1": 0.9090909090909091
+   },
+   "vehicle": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 6,
+    "P": 1,
+    "R": 0.625,
+    "F1": 0.7692307692307693
+   },
+   "all": {
+    "tp": 47,
+    "fp": 4,
+    "fn": 6,
+    "P": 0.9215686274509803,
+    "R": 0.8867924528301887,
+    "F1": 0.9038461538461539
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.9285714285714286,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 264.3,
+   "p95": 318,
+   "pre50": 0.1,
+   "inf50": 264.3,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.6,
+   "animal": 0.25,
+   "vehicle": 0.75
+  }
+ },
+ "v1-coco-lite": {
+  "fixed": {
+   "name": "v1-coco-lite",
+   "label": "v1 COCO-SSD lite_mobilenet_v2 (stretched 320 long side, minScore 0.5, lib NMS iou=0.5)",
+   "backend": "webgl",
+   "loadMs": 4708,
+   "person": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.5882352941176471,
+    "F1": 0.7407407407407407
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.65,
+    "F1": 0.787878787878788
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 37,
+    "fp": 0,
+    "fn": 16,
+    "P": 1,
+    "R": 0.6981132075471698,
+    "F1": 0.8222222222222222
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.35714285714285715,
+   "negFrames": 74,
+   "negFPFrameRate": 0,
+   "rawFPperMin": 0,
+   "confirmedFPperMin": 0,
+   "p50": 356.90000000000003,
+   "p95": 482.5,
+   "pre50": 0.3,
+   "inf50": 356.6,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "v1-coco-lite",
+   "label": "v1 COCO-SSD lite_mobilenet_v2 (stretched 320 long side, minScore 0.5, lib NMS iou=0.5)",
+   "backend": "webgl",
+   "loadMs": 4708,
+   "person": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.5882352941176471,
+    "F1": 0.7407407407407407
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.65,
+    "F1": 0.787878787878788
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 37,
+    "fp": 0,
+    "fn": 16,
+    "P": 1,
+    "R": 0.6981132075471698,
+    "F1": 0.8222222222222222
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.35714285714285715,
+   "negFrames": 74,
+   "negFPFrameRate": 0,
+   "rawFPperMin": 0,
+   "confirmedFPperMin": 0,
+   "p50": 356.90000000000003,
+   "p95": 482.5,
+   "pre50": 0.3,
+   "inf50": 356.6,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.5,
+   "animal": 0.5,
+   "vehicle": 0.5
+  }
+ },
+ "v1-coco-mnv2": {
+  "fixed": {
+   "name": "v1-coco-mnv2",
+   "label": "v1 COCO-SSD mobilenet_v2 (stretched 320 long side, minScore 0.5, lib NMS iou=0.5)",
+   "backend": "webgl",
+   "loadMs": 6464,
+   "person": {
+    "tp": 11,
+    "fp": 1,
+    "fn": 6,
+    "P": 0.9166666666666666,
+    "R": 0.6470588235294118,
+    "F1": 0.7586206896551724
+   },
+   "animal": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 10,
+    "P": 1,
+    "R": 0.5,
+    "F1": 0.6666666666666666
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 3,
+    "P": 1,
+    "R": 0.8125,
+    "F1": 0.896551724137931
+   },
+   "all": {
+    "tp": 34,
+    "fp": 1,
+    "fn": 19,
+    "P": 0.9714285714285714,
+    "R": 0.6415094339622641,
+    "F1": 0.7727272727272727
+   },
+   "negFPByGroup": {
+    "person": 0.02702702702702703,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.2857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 916.3,
+   "p95": 1033.1000000000001,
+   "pre50": 0.3,
+   "inf50": 916,
+   "post50": 0
+  },
+  "tuned": {
+   "name": "v1-coco-mnv2",
+   "label": "v1 COCO-SSD mobilenet_v2 (stretched 320 long side, minScore 0.5, lib NMS iou=0.5)",
+   "backend": "webgl",
+   "loadMs": 6464,
+   "person": {
+    "tp": 11,
+    "fp": 1,
+    "fn": 6,
+    "P": 0.9166666666666666,
+    "R": 0.6470588235294118,
+    "F1": 0.7586206896551724
+   },
+   "animal": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 10,
+    "P": 1,
+    "R": 0.5,
+    "F1": 0.6666666666666666
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 3,
+    "P": 1,
+    "R": 0.8125,
+    "F1": 0.896551724137931
+   },
+   "all": {
+    "tp": 34,
+    "fp": 1,
+    "fn": 19,
+    "P": 0.9714285714285714,
+    "R": 0.6415094339622641,
+    "F1": 0.7727272727272727
+   },
+   "negFPByGroup": {
+    "person": 0.02702702702702703,
+    "animal": 0,
+    "vehicle": 0
+   },
+   "hardRecall": 0.2857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 916.3,
+   "p95": 1033.1000000000001,
+   "pre50": 0.3,
+   "inf50": 916,
+   "post50": 0
+  },
+  "tunedThr": {
+   "person": 0.5,
+   "animal": 0.5,
+   "vehicle": 0.5
+  }
+ },
+ "yolo11n@320": {
+  "fixed": {
+   "name": "yolo11n@320",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1340,
+   "person": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.8823529411764706,
+    "F1": 0.9375
+   },
+   "animal": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 6,
+    "P": 1,
+    "R": 0.7,
+    "F1": 0.8235294117647058
+   },
+   "vehicle": {
+    "tp": 11,
+    "fp": 0,
+    "fn": 5,
+    "P": 1,
+    "R": 0.6875,
+    "F1": 0.8148148148148148
+   },
+   "all": {
+    "tp": 40,
+    "fp": 0,
+    "fn": 13,
+    "P": 1,
+    "R": 0.7547169811320755,
+    "F1": 0.8602150537634409
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 0,
+   "p50": 114.4,
+   "p95": 131.9,
+   "pre50": 5.4,
+   "inf50": 106.8,
+   "post50": 0.4
+  },
+  "tuned": {
+   "name": "yolo11n@320",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1340,
+   "person": {
+    "tp": 16,
+    "fp": 1,
+    "fn": 1,
+    "P": 0.9411764705882353,
+    "R": 0.9411764705882353,
+    "F1": 0.9411764705882353
+   },
+   "animal": {
+    "tp": 19,
+    "fp": 1,
+    "fn": 1,
+    "P": 0.95,
+    "R": 0.95,
+    "F1": 0.9500000000000001
+   },
+   "vehicle": {
+    "tp": 11,
+    "fp": 0,
+    "fn": 5,
+    "P": 1,
+    "R": 0.6875,
+    "F1": 0.8148148148148148
+   },
+   "all": {
+    "tp": 46,
+    "fp": 2,
+    "fn": 7,
+    "P": 0.9583333333333334,
+    "R": 0.8679245283018868,
+    "F1": 0.910891089108911
+   },
+   "negFPByGroup": {
+    "person": 0.013513513513513514,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.8571428571428571,
+   "negFrames": 74,
+   "negFPFrameRate": 0.04054054054054054,
+   "rawFPperMin": 4.864864864864865,
+   "confirmedFPperMin": 0,
+   "p50": 114.4,
+   "p95": 131.9,
+   "pre50": 5.4,
+   "inf50": 106.8,
+   "post50": 0.4
+  },
+  "tunedThr": {
+   "person": 0.35,
+   "animal": 0.2,
+   "vehicle": 0.5
+  }
+ },
+ "yolo11n@416": {
+  "fixed": {
+   "name": "yolo11n@416",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1471,
+   "person": {
+    "tp": 17,
+    "fp": 1,
+    "fn": 0,
+    "P": 0.9444444444444444,
+    "R": 1,
+    "F1": 0.9714285714285714
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.65,
+    "F1": 0.787878787878788
+   },
+   "vehicle": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 4,
+    "P": 1,
+    "R": 0.75,
+    "F1": 0.8571428571428571
+   },
+   "all": {
+    "tp": 42,
+    "fp": 1,
+    "fn": 11,
+    "P": 0.9767441860465116,
+    "R": 0.7924528301886793,
+    "F1": 0.875
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.17567567567567569
+   },
+   "hardRecall": 0.7142857142857143,
+   "negFrames": 74,
+   "negFPFrameRate": 0.17567567567567569,
+   "rawFPperMin": 21.08108108108108,
+   "confirmedFPperMin": 3.4285714285714284,
+   "p50": 147.79999999999998,
+   "p95": 200.5,
+   "pre50": 5.8,
+   "inf50": 141.4,
+   "post50": 0.7
+  },
+  "tuned": {
+   "name": "yolo11n@416",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1471,
+   "person": {
+    "tp": 17,
+    "fp": 1,
+    "fn": 0,
+    "P": 0.9444444444444444,
+    "R": 1,
+    "F1": 0.9714285714285714
+   },
+   "animal": {
+    "tp": 19,
+    "fp": 2,
+    "fn": 1,
+    "P": 0.9047619047619048,
+    "R": 0.95,
+    "F1": 0.9268292682926829
+   },
+   "vehicle": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 6,
+    "P": 1,
+    "R": 0.625,
+    "F1": 0.7692307692307693
+   },
+   "all": {
+    "tp": 46,
+    "fp": 3,
+    "fn": 7,
+    "P": 0.9387755102040817,
+    "R": 0.8679245283018868,
+    "F1": 0.9019607843137256
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.9285714285714286,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 147.79999999999998,
+   "p95": 200.5,
+   "pre50": 5.8,
+   "inf50": 141.4,
+   "post50": 0.7
+  },
+  "tunedThr": {
+   "person": 0.35,
+   "animal": 0.2,
+   "vehicle": 0.65
+  }
+ },
+ "yolo11n@416+enh": {
+  "fixed": {
+   "name": "yolo11n@416+enh",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1519,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 7,
+    "P": 1,
+    "R": 0.65,
+    "F1": 0.787878787878788
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 3,
+    "P": 1,
+    "R": 0.8125,
+    "F1": 0.896551724137931
+   },
+   "all": {
+    "tp": 43,
+    "fp": 0,
+    "fn": 10,
+    "P": 1,
+    "R": 0.8113207547169812,
+    "F1": 0.8958333333333334
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.08108108108108109
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.08108108108108109,
+   "rawFPperMin": 9.72972972972973,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 153.79999999999998,
+   "p95": 204.7,
+   "pre50": 6.9,
+   "inf50": 144.4,
+   "post50": 0.6
+  },
+  "tuned": {
+   "name": "yolo11n@416+enh",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1519,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 18,
+    "fp": 1,
+    "fn": 2,
+    "P": 0.9473684210526315,
+    "R": 0.9,
+    "F1": 0.9230769230769231
+   },
+   "vehicle": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 4,
+    "P": 1,
+    "R": 0.75,
+    "F1": 0.8571428571428571
+   },
+   "all": {
+    "tp": 47,
+    "fp": 1,
+    "fn": 6,
+    "P": 0.9791666666666666,
+    "R": 0.8867924528301887,
+    "F1": 0.9306930693069307
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.8571428571428571,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 153.79999999999998,
+   "p95": 204.7,
+   "pre50": 6.9,
+   "inf50": 144.4,
+   "post50": 0.6
+  },
+  "tunedThr": {
+   "person": 0.45,
+   "animal": 0.25,
+   "vehicle": 0.6
+  }
+ },
+ "yolo11n@640": {
+  "fixed": {
+   "name": "yolo11n@640",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1562,
+   "person": {
+    "tp": 17,
+    "fp": 2,
+    "fn": 0,
+    "P": 0.8947368421052632,
+    "R": 1,
+    "F1": 0.9444444444444444
+   },
+   "animal": {
+    "tp": 13,
+    "fp": 1,
+    "fn": 7,
+    "P": 0.9285714285714286,
+    "R": 0.65,
+    "F1": 0.7647058823529412
+   },
+   "vehicle": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 2,
+    "P": 1,
+    "R": 0.875,
+    "F1": 0.9333333333333333
+   },
+   "all": {
+    "tp": 44,
+    "fp": 3,
+    "fn": 9,
+    "P": 0.9361702127659575,
+    "R": 0.8301886792452831,
+    "F1": 0.88
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.2972972972972973
+   },
+   "hardRecall": 0.8571428571428571,
+   "negFrames": 74,
+   "negFPFrameRate": 0.2972972972972973,
+   "rawFPperMin": 35.67567567567568,
+   "confirmedFPperMin": 3.4285714285714284,
+   "p50": 349.7,
+   "p95": 486,
+   "pre50": 10.6,
+   "inf50": 337.3,
+   "post50": 1.3
+  },
+  "tuned": {
+   "name": "yolo11n@640",
+   "label": "YOLO11n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1562,
+   "person": {
+    "tp": 17,
+    "fp": 1,
+    "fn": 0,
+    "P": 0.9444444444444444,
+    "R": 1,
+    "F1": 0.9714285714285714
+   },
+   "animal": {
+    "tp": 20,
+    "fp": 2,
+    "fn": 0,
+    "P": 0.9090909090909091,
+    "R": 1,
+    "F1": 0.9523809523809523
+   },
+   "vehicle": {
+    "tp": 8,
+    "fp": 0,
+    "fn": 8,
+    "P": 1,
+    "R": 0.5,
+    "F1": 0.6666666666666666
+   },
+   "all": {
+    "tp": 45,
+    "fp": 3,
+    "fn": 8,
+    "P": 0.9375,
+    "R": 0.8490566037735849,
+    "F1": 0.8910891089108911
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.06756756756756757
+   },
+   "hardRecall": 0.9285714285714286,
+   "negFrames": 74,
+   "negFPFrameRate": 0.06756756756756757,
+   "rawFPperMin": 8.108108108108107,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 349.7,
+   "p95": 486,
+   "pre50": 10.6,
+   "inf50": 337.3,
+   "post50": 1.3
+  },
+  "tunedThr": {
+   "person": 0.6,
+   "animal": 0.2,
+   "vehicle": 0.8
+  }
+ },
+ "yolov8n@320": {
+  "fixed": {
+   "name": "yolov8n@320",
+   "label": "YOLOv8n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1758,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 10,
+    "P": 1,
+    "R": 0.5,
+    "F1": 0.6666666666666666
+   },
+   "vehicle": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 4,
+    "P": 1,
+    "R": 0.75,
+    "F1": 0.8571428571428571
+   },
+   "all": {
+    "tp": 39,
+    "fp": 0,
+    "fn": 14,
+    "P": 1,
+    "R": 0.7358490566037735,
+    "F1": 0.8478260869565216
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.08108108108108109
+   },
+   "hardRecall": 0.7142857142857143,
+   "negFrames": 74,
+   "negFPFrameRate": 0.08108108108108109,
+   "rawFPperMin": 9.72972972972973,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 114.19999999999999,
+   "p95": 148,
+   "pre50": 5.6,
+   "inf50": 107.8,
+   "post50": 0.3
+  },
+  "tuned": {
+   "name": "yolov8n@320",
+   "label": "YOLOv8n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1758,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 17,
+    "fp": 1,
+    "fn": 3,
+    "P": 0.9444444444444444,
+    "R": 0.85,
+    "F1": 0.8947368421052632
+   },
+   "vehicle": {
+    "tp": 11,
+    "fp": 0,
+    "fn": 5,
+    "P": 1,
+    "R": 0.6875,
+    "F1": 0.8148148148148148
+   },
+   "all": {
+    "tp": 45,
+    "fp": 1,
+    "fn": 8,
+    "P": 0.9782608695652174,
+    "R": 0.8490566037735849,
+    "F1": 0.9090909090909092
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.02702702702702703
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 1.7142857142857142,
+   "p50": 114.19999999999999,
+   "p95": 148,
+   "pre50": 5.6,
+   "inf50": 107.8,
+   "post50": 0.3
+  },
+  "tunedThr": {
+   "person": 0.4,
+   "animal": 0.2,
+   "vehicle": 0.6
+  }
+ },
+ "yolov8n@416": {
+  "fixed": {
+   "name": "yolov8n@416",
+   "label": "YOLOv8n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1505,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 8,
+    "P": 1,
+    "R": 0.6,
+    "F1": 0.7499999999999999
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 3,
+    "P": 1,
+    "R": 0.8125,
+    "F1": 0.896551724137931
+   },
+   "all": {
+    "tp": 42,
+    "fp": 0,
+    "fn": 11,
+    "P": 1,
+    "R": 0.7924528301886793,
+    "F1": 0.8842105263157896
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.17567567567567569
+   },
+   "hardRecall": 0.7142857142857143,
+   "negFrames": 74,
+   "negFPFrameRate": 0.17567567567567569,
+   "rawFPperMin": 21.08108108108108,
+   "confirmedFPperMin": 3.4285714285714284,
+   "p50": 177.9,
+   "p95": 238,
+   "pre50": 6.5,
+   "inf50": 170.4,
+   "post50": 0.5
+  },
+  "tuned": {
+   "name": "yolov8n@416",
+   "label": "YOLOv8n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1505,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 17,
+    "fp": 1,
+    "fn": 3,
+    "P": 0.9444444444444444,
+    "R": 0.85,
+    "F1": 0.8947368421052632
+   },
+   "vehicle": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 4,
+    "P": 1,
+    "R": 0.75,
+    "F1": 0.8571428571428571
+   },
+   "all": {
+    "tp": 46,
+    "fp": 1,
+    "fn": 7,
+    "P": 0.9787234042553191,
+    "R": 0.8679245283018868,
+    "F1": 0.9199999999999999
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0.013513513513513514,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.7857142857142857,
+   "negFrames": 74,
+   "negFPFrameRate": 0.02702702702702703,
+   "rawFPperMin": 3.243243243243243,
+   "confirmedFPperMin": 0,
+   "p50": 177.9,
+   "p95": 238,
+   "pre50": 6.5,
+   "inf50": 170.4,
+   "post50": 0.5
+  },
+  "tunedThr": {
+   "person": 0.5,
+   "animal": 0.2,
+   "vehicle": 0.6
+  }
+ },
+ "yolov8n@640": {
+  "fixed": {
+   "name": "yolov8n@640",
+   "label": "YOLOv8n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1785,
+   "person": {
+    "tp": 17,
+    "fp": 3,
+    "fn": 0,
+    "P": 0.85,
+    "R": 1,
+    "F1": 0.9189189189189189
+   },
+   "animal": {
+    "tp": 11,
+    "fp": 3,
+    "fn": 9,
+    "P": 0.7857142857142857,
+    "R": 0.55,
+    "F1": 0.6470588235294117
+   },
+   "vehicle": {
+    "tp": 13,
+    "fp": 1,
+    "fn": 3,
+    "P": 0.9285714285714286,
+    "R": 0.8125,
+    "F1": 0.8666666666666666
+   },
+   "all": {
+    "tp": 41,
+    "fp": 7,
+    "fn": 12,
+    "P": 0.8541666666666666,
+    "R": 0.7735849056603774,
+    "F1": 0.811881188118812
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.24324324324324326
+   },
+   "hardRecall": 0.7142857142857143,
+   "negFrames": 74,
+   "negFPFrameRate": 0.24324324324324326,
+   "rawFPperMin": 29.18918918918919,
+   "confirmedFPperMin": 3.4285714285714284,
+   "p50": 415.3,
+   "p95": 538.4000000000001,
+   "pre50": 11.2,
+   "inf50": 401,
+   "post50": 1.2
+  },
+  "tuned": {
+   "name": "yolov8n@640",
+   "label": "YOLOv8n (ONNX, AGPL-3.0)",
+   "backend": "ort-wasm",
+   "loadMs": 1785,
+   "person": {
+    "tp": 17,
+    "fp": 0,
+    "fn": 0,
+    "P": 1,
+    "R": 1,
+    "F1": 1
+   },
+   "animal": {
+    "tp": 19,
+    "fp": 4,
+    "fn": 1,
+    "P": 0.8260869565217391,
+    "R": 0.95,
+    "F1": 0.8837209302325583
+   },
+   "vehicle": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 6,
+    "P": 1,
+    "R": 0.625,
+    "F1": 0.7692307692307693
+   },
+   "all": {
+    "tp": 46,
+    "fp": 4,
+    "fn": 7,
+    "P": 0.92,
+    "R": 0.8679245283018868,
+    "F1": 0.8932038834951457
+   },
+   "negFPByGroup": {
+    "person": 0,
+    "animal": 0,
+    "vehicle": 0.013513513513513514
+   },
+   "hardRecall": 0.8571428571428571,
+   "negFrames": 74,
+   "negFPFrameRate": 0.013513513513513514,
+   "rawFPperMin": 1.6216216216216215,
+   "confirmedFPperMin": 0,
+   "p50": 415.3,
+   "p95": 538.4000000000001,
+   "pre50": 11.2,
+   "inf50": 401,
+   "post50": 1.2
+  },
+  "tunedThr": {
+   "person": 0.65,
+   "animal": 0.2,
+   "vehicle": 0.7
+  }
+ }
+}

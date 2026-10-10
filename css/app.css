@@ -57,3 +57,16 @@ input[type=number] { width: 70px; }
 .status { color: var(--acid); font-weight: 800; letter-spacing: .2em; font-size: 13px; } .caps { font-size: 11px; color: var(--muted); max-width: 340px; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--nav) + 20px + env(safe-area-inset-bottom)); background: var(--acid); color: #000; font-weight: 800; padding: 8px 14px; border-radius: 8px; z-index: 20; font-size: 13px; max-width: 90%; }
 @media (orientation: landscape) and (max-height: 500px) { #tab-live.active { flex-direction: row; } #livepanel { max-height: none; width: 300px; border-top: 0; border-left: 1px solid var(--line); } }
+/* v2 */
+.ver { color: var(--acid); font-size: 10px; border: 1px solid var(--acid); border-radius: 4px; padding: 0 4px; letter-spacing: .1em; }
+.mon { margin-left: auto; font-size: 9px; color: var(--warn); letter-spacing: .1em; } .mon.paused { color: var(--danger); }
+.warnbox { border: 1px solid var(--warn); color: var(--warn); border-radius: 8px; padding: 6px 10px; }
+.incbar { margin-top: 4px; background: #2a0d0de6; border: 1px solid var(--danger); color: #ffb3ad; border-radius: 6px; padding: 3px 6px; font-size: 12px; }
+.sheet { position: absolute; left: 10px; right: 10px; bottom: 10px; background: #0a0d07f2; border: 1px solid var(--acid); border-radius: 10px; padding: 10px; z-index: 4; }
+.sheet .row .btn { flex: 1; }
+label.inl, .inl { display: inline-flex; gap: 4px; align-items: center; margin: 0 6px 0 0; font-size: 13px; }
+table.kv td:first-child { color: var(--muted); } table.kv td { text-align: left; white-space: normal; }
+.rej { color: var(--muted); } .ok { color: var(--acid); } .bad { color: var(--danger); }
+.inc { border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin: 6px 0; font-size: 13px; } .inc .thumbs img { width: 72px; height: 54px; object-fit: cover; margin-right: 4px; border-radius: 4px; }
+.inc .rc { color: var(--warn); font-size: 11px; } .inc .co { color: #00E5FF; font-size: 11px; }
+#tabs button { font-size: 10px; letter-spacing: .06em; }

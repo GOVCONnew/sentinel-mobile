@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><title>YAMNet dump</title></head><body><pre id="l">running</pre>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script>window.SENTINEL_BASE = '../';</script><script src="../js/audio.js"></script>
+<script>
+// Runs YAMNet over bench/clips/*.wav with 0.975 s windows, 0.5 s hop; dumps per-window scores (sparse: >=0.01) + RMS dB.
+(async function () {
+  var clips = ['neg_wind_1', 'neg_rain_1', 'neg_rain_2', 'neg_rainwind_3', 'neg_rain_thunder_4', 'pos_bird_1', 'pos_chainsaw_1', 'pos_dog_1', 'pos_footsteps_birds_1', 'pos_cars_birds_1', 'pos_cars_2', 'pos_gunshot_1'];
+  var out = window.__dump = { done: false, classes: null, clips: {} };
+  await tf.setBackend('webgl'); await SAudio.load(); out.classes = SAudio.getClasses();
+  for (var c of clips) {
+    var buf = await (await fetch('clips/' + c + '.wav')).arrayBuffer(), dv = new DataView(buf), off = 12, pcm;
+    while (off < buf.byteLength) { var id = String.fromCharCode(dv.getUint8(off), dv.getUint8(off + 1), dv.getUint8(off + 2), dv.getUint8(off + 3)), sz = dv.getUint32(off + 4, true); if (id === 'data') { pcm = new Int16Array(buf.slice(off + 8, off + 8 + sz)); break; } off += 8 + sz; }
+    var w = Float32Array.from(pcm, function (v) { return v / 32768; }), wins = [];
+    for (var s = 0; s + SAudio.WIN <= w.length; s += 8000) {
+      var seg = w.subarray(s, s + SAudio.WIN), r = await SAudio.classify(seg, 3), e = 0; for (var i = 0; i < seg.length; i++) e += seg[i] * seg[i];
+      var sp = {}; r.scores.forEach(function (v, i) { if (v >= 0.01) sp[i] = +v.toFixed(3); });
+      wins.push({ t: s / 16000, db: +(10 * Math.log10(e / seg.length + 1e-12)).toFixed(1), s: sp, ms: +r.ms.toFixed(1) });
+    }
+    out.clips[c] = wins; document.getElementById('l').textContent += '\n' + c + ' ' + wins.length;
+  }
+  out.done = true;
+})();
+</script></body></html>

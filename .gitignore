@@ -1,0 +1,2 @@
+bench/seq/*.bin
+node_modules/
